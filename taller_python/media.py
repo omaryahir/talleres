@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 
-# Media of 3 numbers
+# Util > Media of 3 numbers, max and sum
 
 maxahora = 0
 suma = 0

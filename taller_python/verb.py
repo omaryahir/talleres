@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# get verb
+# Util > Using verbs
 
 verb = raw_input("Escriba el verbo:")
 

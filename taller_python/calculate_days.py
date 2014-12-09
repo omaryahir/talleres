@@ -1,5 +1,7 @@
 # -*- coding: utf8 -*-
 
+# Util > Print secondos in differents values 
+
 # request number of seconds.
 seconds = raw_input("Dígite los segundos:")
 
