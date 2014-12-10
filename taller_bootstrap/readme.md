@@ -12,6 +12,10 @@ Este repo de taller contiene código y generalidades de bootstrap y css.
 **Paramtros Generales**
 parameter:
 - lg
-- md
-- sm
+- md  (mobile device)
+- sm  
 - xs
+
+Automaticamente autoajusta el viewport de acuerdo al tamaño de la pantalla.
+
+
