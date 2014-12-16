@@ -19,3 +19,6 @@ parameter:
 Automaticamente autoajusta el viewport de acuerdo al tamaño de la pantalla.
 
 
+Carousel responsivo:
+http://owlgraphic.com/owlcarousel/#demo
+
