@@ -8,11 +8,11 @@
   <meta charset="utf-8">
   <title>JS Bin</title>
 
-		<style type="text/css">
-			.carousel-control.left, .carousel-control.right{ 
-			background: none !important; 
-			filter: progid:none !important; 
-			}#logo_administracion {
+    <style type="text/css">
+      .carousel-control.left, .carousel-control.right{ 
+      background: none !important; 
+      filter: progid:none !important; 
+      }#logo_administracion {
 float: left;
 width: 335px;
 height: 100px;
@@ -23,36 +23,35 @@ cursor: pointer;
 }
 #escudo_gobierno_header {
 float: right;
-width: 0px;
 height: 110px;
-width: 505px;
 font-family: calibri, arial, tahoma;
 font-size: 12px;
 color: #666;
 }
 
-		</style>
+
+    </style>
 
 
 </head>
 <body>
   <div class="container">
 <header>
-	   <div class="col-md-11 col-sm-11 col-xs-11 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+     <div class="col-md-11 col-sm-11 col-xs-11 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
         
-   		   <div class="col-md-4 col-sm-9 col-xs-12" id="logo_administracion"></div>
-           <div class="col-md-7 col-sm-9 col-xs-12 pull-right">
-               	<div id="escudo_gobierno_header">
+         <div class="col-md-4 col-sm-9 col-xs-12" id="logo_administracion"></div>
+           <div class="col-md-7 col-sm-5 col-xs-12 pull-right">
+                <div id="escudo_gobierno_header">
                      <div id="col_header_right">
-           		        <div id="row_header_datos" style="margin-left:80px; padding-top:10px;">16 de Diciembre de 2014&nbsp; &nbsp; &nbsp; &nbsp; <img src="http://www.colima-estado.gob.mx/cfg/imagenes/ico/ico_clima_1.png" alt="clima" width="29" height="16" align="top" />&nbsp;&nbsp;<strong> 15°C</strong> mínima    &nbsp;&nbsp;&nbsp; <strong>29°C</strong> máxima      &nbsp; buzón de sugerencias <a href="contacto.php"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/ico/ico_mail.png" alt="correo electronico" title="correo electronico" width="23" height="17" border="0" /></a></div>
+                      <div id="row_header_datos" style="margin-left:80px; padding-top:10px;">16 de Diciembre de 2014&nbsp; &nbsp; &nbsp; &nbsp; <img src="http://www.colima-estado.gob.mx/cfg/imagenes/ico/ico_clima_1.png" alt="clima" width="29" height="16" align="top" />&nbsp;&nbsp;<strong> 15°C</strong> mínima    &nbsp;&nbsp;&nbsp; <strong>29°C</strong> máxima      &nbsp; buzón de sugerencias <a href="contacto.php"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/ico/ico_mail.png" alt="correo electronico" title="correo electronico" width="23" height="17" border="0" /></a></div>
                         <div id="row_header_buscador" style="margin-top:20px; margin-left:130px;"><script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=es"></script>
                           <form name="cse-search-box" action="http://www.colima-estado.gob.mx/resultados_google.php" id="cse-search-box">               
-										<input type="hidden" name="cx" value="014236938551008680577:ggci54l8_jy" />
-										<input type="hidden" name="cof" value="FORID:10" />
-							<input type="hidden" name="ie" value="UTF-8" />
-										buscar en el sitio:<input name="q" type="text" size="25" maxlength="2048" /> &nbsp;
-						
-						    <img src="http://www.colima-estado.gob.mx/cfg/imagenes/btn/btn_buscar.png" alt="buscar" width="86" height="36" align="top" style="cursor:pointer" onclick="javascript:document.getElementById('cse-search-box').submit();"/>
+                    <input type="hidden" name="cx" value="014236938551008680577:ggci54l8_jy" />
+                    <input type="hidden" name="cof" value="FORID:10" />
+              <input type="hidden" name="ie" value="UTF-8" />
+                    buscar en el sitio:<input name="q" type="text" size="25" maxlength="2048" /> &nbsp;
+            
+                <img src="http://www.colima-estado.gob.mx/cfg/imagenes/btn/btn_buscar.png" alt="buscar" width="86" height="36" align="top" style="cursor:pointer" onclick="javascript:document.getElementById('cse-search-box').submit();"/>
                                       </form>
                                         </label>
                         </div>
@@ -63,14 +62,26 @@ color: #666;
         </div>
         <div class="row">
             <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                <nav>
-                  <ul class="nav nav-pills pull-left">
-                    <li class="active"><a href="#" class="glyphicon glyphicon-home"> inicio</a></li>
-                    <li><a href="#">trámites y servicios</a></li>
-                    <li><a href="#">transparencia</a></li>
-                    <li><a href="#">negocio</a></li>
-                    <li><a href="#">gobierno</a></li>
-                  </ul>
+                <nav class="navbar navbar-default" role="navigation">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Menú</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav pull-left" >
+                      <li class="active"><a href="#" class="glyphicon glyphicon-home"> inicio</a></li>
+                      <li><a href="#">trámites y servicios</a></li>
+                      <li><a href="#">transparencia</a></li>
+                      <li><a href="#">negocio</a></li>
+                      <li><a href="#">gobierno</a></li>
+                    </ul>
+                    </div>
+                  </div>
                 </nav>
             </div>
         </div>
@@ -78,98 +89,98 @@ color: #666;
     
     
     <!-- INICIO TRAMITES Y CAROUSEL -->
-			<div class="row well">
-				<div class="col-md-4">
-					<img src="http://www.colima-estado.gob.mx/imagenes/gray_banner.png">
-				</div>
-				<div class="col-md-4">
-					<br>
-					<h5>Trámites y Servicios</h5>
-					<a href="http://www.colima-estado.gob.mx/serviciosenlinea/" 
-						class="btn btn-primary" style="width:270px">
-						Lista de trámites y servicios en línea
-					</a>
-					<br><br>
-					<a href="http://www.tramitesyservicios.col.gob.mx/consulta_tramites" 
-						class="btn btn-warning" style="width:270px">
-						Registro estatal de trámites y servicios
-					</a>	
-				</div>
-				<div class="col-md-4">
-					<a href="http://validacion.col.gob.mx/" class="btn btn-link">
-					<h5>Validación de documentos</h5>
-					</a>
-					<p>
-						Ingrese a esta sección para validar la autenticación de la Firma Electrónica Certificada, plasmada en documentos emitidos por el Gobierno del Estado.
-					</p>	
+      <div class="row well">
+        <div class="col-md-4">
+          <img src="http://www.colima-estado.gob.mx/imagenes/gray_banner.png">
+        </div>
+        <div class="col-md-4">
+          <br>
+          <h5>Trámites y Servicios</h5>
+          <a href="http://www.colima-estado.gob.mx/serviciosenlinea/" 
+            class="btn btn-primary" style="width:270px">
+            Lista de trámites y servicios en línea
+          </a>
+          <br><br>
+          <a href="http://www.tramitesyservicios.col.gob.mx/consulta_tramites" 
+            class="btn btn-warning" style="width:270px">
+            Registro estatal de trámites y servicios
+          </a>  
+        </div>
+        <div class="col-md-4">
+          <a href="http://validacion.col.gob.mx/" class="btn btn-link">
+          <h5>Validación de documentos</h5>
+          </a>
+          <p>
+            Ingrese a esta sección para validar la autenticación de la Firma Electrónica Certificada, plasmada en documentos emitidos por el Gobierno del Estado.
+          </p>  
 
-				</div>
-			</div>
+        </div>
+      </div>
 
-			<br>
-			<div class="row well">
-
-
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				  </ol>
-
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner" role="listbox">
-				    <div class="item active">
-				    	<center>
-				      <a href="http://gob.us5.list-manage.com/subscribe?u=1a105b5d5f1b2a581f454bedc&id=721e1495cc">
-				      <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_50475632abf4a.banner_colima.jpg" alt="SIIW 2.0"></a>
-
-				      <a href="">
-				      <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_4f3bea578688b.baner_proovedores.jpg" alt="Portal proveedores">
-				      </a>
-
-				      <a href="">
-				      <img  style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_4f3beac960c28.bnr_sistemacitas.jpg" alt="Portal proveedores">
-				      </a>
-
-				      <div class="carousel-caption">				      					    
-				      </div>
-				      	</center>
-				    </div>
-				    <div class="item">
-				    	<center>
-				      <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_547e58b374c89_bnr_seminario_imades.jpg" alt="SIIW 2.0">				      
-				      <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_5489fc0c2222e_bnr_5to_informe.jpg" alt="Portal proveedores">
-				      <img  style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_5446807aeb866_bnr_colimaonline.jpg" alt="Portal proveedores">
-				      <div class="carousel-caption">
-				      </div>
-				      	</center>
-				    </div>
-				    <div class="item">
-				    	<center>
-				      <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_511cf63fa7e0d.COLIMA-ESTADO.jpg" alt="SIIW 2.0">				      
-				      <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_53f2c57f30a43_Gobedo.jpg" alt="Portal proveedores">
-				      <img  style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_537e20ed4c9ba.Normateca%20Digital.jpg" alt="Portal proveedores">
-				      <div class="carousel-caption">				    
-				      </div>
-				      	</center>
-				    </div>
+      <br>
+      <div class="row well">
 
 
-				  </div>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
 
-				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				</div>
-			</div>	 <!-- FIN TRAMITES Y CAROUSEL -->
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <center>
+              <a href="http://gob.us5.list-manage.com/subscribe?u=1a105b5d5f1b2a581f454bedc&id=721e1495cc">
+              <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_50475632abf4a.banner_colima.jpg" alt="SIIW 2.0"></a>
+
+              <a href="">
+              <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_4f3bea578688b.baner_proovedores.jpg" alt="Portal proveedores">
+              </a>
+
+              <a href="">
+              <img  style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_4f3beac960c28.bnr_sistemacitas.jpg" alt="Portal proveedores">
+              </a>
+
+              <div class="carousel-caption">                            
+              </div>
+                </center>
+            </div>
+            <div class="item">
+              <center>
+              <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_547e58b374c89_bnr_seminario_imades.jpg" alt="SIIW 2.0">              
+              <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_5489fc0c2222e_bnr_5to_informe.jpg" alt="Portal proveedores">
+              <img  style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_5446807aeb866_bnr_colimaonline.jpg" alt="Portal proveedores">
+              <div class="carousel-caption">
+              </div>
+                </center>
+            </div>
+            <div class="item">
+              <center>
+              <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_511cf63fa7e0d.COLIMA-ESTADO.jpg" alt="SIIW 2.0">             
+              <img style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_53f2c57f30a43_Gobedo.jpg" alt="Portal proveedores">
+              <img  style="display:inline;" src="http://www.colima-estado.gob.mx/archivos_prensa/banco_img/file_537e20ed4c9ba.Normateca%20Digital.jpg" alt="Portal proveedores">
+              <div class="carousel-caption">            
+              </div>
+                </center>
+            </div>
+
+
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>   <!-- FIN TRAMITES Y CAROUSEL -->
 
     
     
@@ -241,7 +252,6 @@ color: #666;
             </div>
           </div><!--Body -->
          </div> <!-- Panel -->
-        </div><!-- md-4 -->
       </div><!-- md-4 -->
       <div class="col-md-4">
         <div class="row">
@@ -278,102 +288,98 @@ color: #666;
 <!-- INICIO PIE DE PAGINA -->
 
 <div class="panel panel-footer">
-        <div id="footer">
-          <div id="footer">     		
-            <div id="content_footer" class="txt_normal_blanco1" >
-              <div id="pie_col1">
-                <div><a href="http://www.colima-estado.gob.mx/"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/img/img_pie_escudogobierno.png" alt="gobierno del estado libre y soberano de colima" width="162" height="79" border="0" /></a></div>
-                <div class="txt_normal_gris1">
-                  Complejo Administrativo del Gobierno del Estado 3er. Anillo Perif&eacute;rico, Esq. Ej&eacute;rcito Mexicano S/N. Colonia el Diezmo Tel. (312) 316 2000 C.P.  28010, Colima, Colima, M&eacute;xico. <br />
-                    <br />
-                </div>               
-                
-                <div>
-                  <img src="http://www.colima-estado.gob.mx/cfg/imagenes/ico/ico_separacion2.png" alt="Icon" width="199" height="2" /><br />
-                    <br />
-                </div>
-            </div>    
-            
-              <div id="pie_col2">
-                <div>
-                    <span class="titulo_gris1">Trámites y servicios</span><br />
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>
-                            <li><a href="http://www.colima-estado.gob.mx/serviciosenlinea/" title="Lista de trámites y servicios en linea">Lista de trámites y servicios en linea</a></li><li><a href="http://www.tramitesyservicios.col.gob.mx/consulta_tramites/" title="Catálogo de trámites y servicios">Catálogo de trámites y servicios</a></li>                    
-                        </ul>            
-                    <!--</span>-->                                 
-                </div>                                
-            </div>        
-            <div id="pie_col3">
-                <div>
-                    <span class="titulo_gris1">Transparencia</span><br />
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>
-                             
-                        </ul>
-                    <!--</span> -->                   
-                </div>
-                <div>
-                    <span class="titulo_gris1">Gobierno</span>                                        
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>
-                            <li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTI4Mg==" title="gabinete">Gabinete</a></li><li><a href="#" title="secretarías">Secretarías</a></li><li><a href="http://www.congresocol.gob.mx/" title="h. congreso del estado">H. congreso del estado</a></li><li><a href="http://stj.col.gob.mx/" title="supremo tribunal de justicia">Supremo tribunal de justicia</a></li><li><a href="http://www.colima-estado.gob.mx/periodico/indexperi.php" title="periódico oficial">Periódico oficial</a></li><li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTI4MQ==" title="municipios">Municipios</a></li><li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MjQyMg== " title="estructura orgánica">Estructura orgánica</a></li><li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTI3OA=#" title="organismos desconcentrados, descentralizados y autónomos">Organismos desconcentrados, descentralizados y autónomos</a></li>                        </ul> 
-                   <!--</span>-->
-                </div>            
-                <div>
-                    <span class="titulo_gris1">Educaci&oacute;n</span><br />
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>
-                                                   </ul>
-                    <!--</span>-->
-                </div>                        
-            </div>        
-            <div id="pie_col4">
-                <div>
-                    <span class="titulo_gris1">Negocios</span><br />
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>
-                             
-                        </ul>  
-                   	<!--</span> -->         
-                </div>
-                <div>
-                    <span class="titulo_gris1">Turismo</span><br />
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>                                          
-                                                    </ul> 
-                    <!--</span>-->
-                </div>                    
-                <div>
-                    <span class="titulo_gris1">Cultura</span><br />
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>
-                                                    </ul> 
-                    <!--</span> -->       
-                </div>
-                <div>
-                    <span class="titulo_gris1">Seguridad</span><br />
-                    <!--<span class="txt_normal_gris1">-->
-                        <ul>
-                            <li><a href="#" title="Protección Civil">Protección Civil</a></li><li><a href="http://www.pgj.col.gob.mx" title="Procuraduria General de Justicia">Procuraduria General de Justicia</a></li><li><a href="http://seguridadpublica.col.gob.mx/" title="Secretaría de Seguridad Pública">Secretaría de Seguridad Pública</a></li>                        </ul> 
-                    <!--</span> -->       
-                </div>
+    <div id="content_footer" class="txt_normal_blanco1" >
+        <div id="pie_col1">
+            <div> <a href="http://www.colima-estado.gob.mx/"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/img/img_pie_escudogobierno.png" alt="gobierno del estado libre y soberano de colima" width="162" height="79" border="0" /></a> </div>
+            <div class="txt_normal_gris1">
+                Complejo Administrativo del Gobierno del Estado 3er. Anillo Perif&eacute;rico, Esq. Ej&eacute;rcito Mexicano S/N. Colonia el Diezmo Tel. (312) 316 2000 C.P.  28010, Colima, Colima, M&eacute;xico. <br />
+                <br />
+            </div>               
+
+            <div>
+                <img src="http://www.colima-estado.gob.mx/cfg/imagenes/ico/ico_separacion2.png" alt="Icon" width="199" height="2" /><br />
+                <br />
             </div>
-            <div id='pie_act'>
-     			<div class="sistema"><a href="http://correo.col.gob.mx/"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_mail_footer.gif" alt="correo de gobierno" width="199" height="14" border="0" /></a></div>
-                <div class="sistema"><a href="http://mantenimientovehicular.col.gob.mx/" title="Mantenimiento vehicular"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_servicios_generales_pie.png" alt="Mantenimiento vehicular" width="148" height="15" border="0" /></a></div>
-		        <div class="sistema"><a href="http://www.adquisiciones.col.gob.mx/adquisiciones/index.php5" title="Sistema de Adquisiciones"><img alt="Sistema de Adquisiciones" src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_sistema_adquisiciones_pie.png" width="176" height="21" border="0" /></a></div>        
-		        <div class="sistema"><a href="http://www.siser.col.gob.mx/" title="Sistema de Entrega Recepci&oacute;n"><img alt="Sistema de Entrega Recepci&oacute;n" src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_siser_pie.png" width="67" height="22" border="0" /></a></div>        
-		        <div class="sistema"><a href="http://www.colima-estado.gob.mx/sgc" title="Sistema de Gesti&oacute;n de Calidad"><img alt="Sistema de Gesti&oacute;n de Calidad" src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_sistema_calidad_pie.png" width="144" height="22" border="0" /></a></div>        
-		    	<div class="sistema"> Fecha de actualizaci&oacute;n: 11/12/2014<br /><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTYxNQ==" target="_blank">Responsable de información</a> </div>
-                <div class="sistema"> </div>
-		    </div>
+        </div>    
+
+        <div id="pie_col2">
+            <div>
+                <span class="titulo_gris1">Trámites y servicios</span><br />
+                <!--<span class="txt_normal_gris1">-->
+                <ul>
+                    <li><a href="http://www.colima-estado.gob.mx/serviciosenlinea/" title="Lista de trámites y servicios en linea">Lista de trámites y servicios en linea</a></li><li><a href="http://www.tramitesyservicios.col.gob.mx/consulta_tramites/" title="Catálogo de trámites y servicios">Catálogo de trámites y servicios</a></li>                    
+                </ul>            
+                <!--</span>-->                                 
+            </div>                                
+        </div>        
+
+        <div id="pie_col3">
+            <div>
+                <span class="titulo_gris1">Transparencia</span><br />
+                <!--<span class="txt_normal_gris1">-->
+                    <ul>
+
+                    </ul>
+                <!--</span> -->                   
+            </div>
+        <div>
+            <span class="titulo_gris1">Gobierno</span>                                        
+            <!--<span class="txt_normal_gris1">-->
+                <ul> <li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTI4Mg==" title="gabinete">Gabinete</a></li><li><a href="#" title="secretarías">Secretarías</a></li><li><a href="http://www.congresocol.gob.mx/" title="h. congreso del estado">H. congreso del estado</a></li><li><a href="http://stj.col.gob.mx/" title="supremo tribunal de justicia">Supremo tribunal de justicia</a></li><li><a href="http://www.colima-estado.gob.mx/periodico/indexperi.php" title="periódico oficial">Periódico oficial</a></li><li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTI4MQ==" title="municipios">Municipios</a></li><li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MjQyMg== " title="estructura orgánica">Estructura orgánica</a></li><li><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTI3OA=#" title="organismos desconcentrados, descentralizados y autónomos">Organismos desconcentrados, descentralizados y autónomos</a></li></ul> 
+            <!--</span>-->
+        </div>            
+
+        <div>
+            <span class="titulo_gris1">Educaci&oacute;n</span><br />
+            <!--<span class="txt_normal_gris1">-->
+                <ul>
+                </ul>
+            <!--</span>-->
+        </div>                        
+    </div>        
+
+    <div id="pie_col4">
+        <div>
+            <span class="titulo_gris1">Negocios</span><br />
+            <!--<span class="txt_normal_gris1">-->
+            <ul>
+
+            </ul>  
+            <!--</span> -->         
+        </div>
+
+        <div>
+            <span class="titulo_gris1">Turismo</span><br />
+            <!--<span class="txt_normal_gris1">-->
+                <ul>                                          
+                </ul> 
+            <!--</span>-->
+        </div>                    
+
+        <div>
+            <span class="titulo_gris1">Cultura</span><br />
+            <!--<span class="txt_normal_gris1">-->
+                <ul>
+                </ul> 
+            <!--</span> -->       
+        </div>
+        <div>
+            <span class="titulo_gris1">Seguridad</span><br />
+            <!--<span class="txt_normal_gris1">-->
+                <ul><li><a href="#" title="Protección Civil">Protección Civil</a></li><li><a href="http://www.pgj.col.gob.mx" title="Procuraduria General de Justicia">Procuraduria General de Justicia</a></li><li><a href="http://seguridadpublica.col.gob.mx/" title="Secretaría de Seguridad Pública">Secretaría de Seguridad Pública</a></li>                        </ul> 
+            <!--</span> -->       
         </div>
     </div>
-				
-        </div>
-    	
-    </div> 
+    <div id='pie_act'>
+        <div class="sistema"><a href="http://correo.col.gob.mx/"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_mail_footer.gif" alt="correo de gobierno" width="199" height="14" border="0" /></a></div>
+        <div class="sistema"><a href="http://mantenimientovehicular.col.gob.mx/" title="Mantenimiento vehicular"><img src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_servicios_generales_pie.png" alt="Mantenimiento vehicular" width="148" height="15" border="0" /></a></div>
+        <div class="sistema"><a href="http://www.adquisiciones.col.gob.mx/adquisiciones/index.php5" title="Sistema de Adquisiciones"><img alt="Sistema de Adquisiciones" src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_sistema_adquisiciones_pie.png" width="176" height="21" border="0" /></a></div>        
+        <div class="sistema"><a href="http://www.siser.col.gob.mx/" title="Sistema de Entrega Recepci&oacute;n"><img alt="Sistema de Entrega Recepci&oacute;n" src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_siser_pie.png" width="67" height="22" border="0" /></a></div>        
+        <div class="sistema"><a href="http://www.colima-estado.gob.mx/sgc" title="Sistema de Gesti&oacute;n de Calidad"><img alt="Sistema de Gesti&oacute;n de Calidad" src="http://www.colima-estado.gob.mx/cfg/imagenes/img/ico_sistema_calidad_pie.png" width="144" height="22" border="0" /></a></div>        
+        <div class="sistema"> Fecha de actualizaci&oacute;n: 11/12/2014<br /><a href="http://www.colima-estado.gob.mx/d/tema.php?iw=MTYxNQ==" target="_blank">Responsable de información</a> </div>
+        <div class="sistema"> </div>
+    </div>
+</div>
 
 
 
@@ -387,5 +393,6 @@ color: #666;
   </div><!--Container -->
 </body>
 </html>
+
 
 
