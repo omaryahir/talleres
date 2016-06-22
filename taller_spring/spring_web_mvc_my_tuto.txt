@@ -23,6 +23,9 @@ Prerequisites:
 03.- Fill the name of the project and location.
 04.- Add under </version> before </project> next lines:
 
+    <groupId>com.myproject</groupId>
+    <artifactId>Spring4WebMVCMaven</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <dependencies>
@@ -30,18 +33,12 @@ Prerequisites:
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>4.3.0.RELEASE</version>
+            <version>4.1.4.RELEASE</version>
         </dependency>
     </dependencies>
 
-05.- In the folder with the name of the project second click
-    and after that select "Add Framework Support..." after
-    that select Spring MVC.
 
-    NOTE: Is possible that you will have to check the 
-    Open Module Settings
-
-
-06.- To add classes open folder of the project and locate:
+05.- To add classes open folder of the project and locate:
     src/main/java
     And second click and select new class ...
     
@@ -63,6 +60,22 @@ Prerequisites:
                 return "test"; // type exactly the string 
             }
         }
+
+
+06.- Second click on main to create next folders:
+    - src/main/webapp
+    - src/main/webapp/WEB-INF
+
+07.- Go to File / New / Module in the left-hand pane select Java, 
+     In the right-hand pane select Web Applications and in the 
+     bottom-hand pane select Create web.xml, finally click Next.
+
+
+
+07.- Inside of webapp and WEB-INF we will need next files:
+    - webapp/test.jsp
+    - webapp/WEB-INF/web.xml 
+
 
 07.- In the case of IntelliJ will create the needed folder as web and
     inside:
