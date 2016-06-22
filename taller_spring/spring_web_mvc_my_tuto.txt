@@ -66,57 +66,107 @@ Prerequisites:
     - src/main/webapp
     - src/main/webapp/WEB-INF
 
-07.- Go to File / New / Module in the left-hand pane select Java, 
-     In the right-hand pane select Web Applications and in the 
-     bottom-hand pane select Create web.xml, finally click Next.
+07.- Add file webapp/test.jsp content:
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <html>
+    <head>
+        <title>Title</title>
+    </head>
+    <body>
+        Hello World !
+    </body>
+    </html>
 
+08.- Add file webapp/WEB-INF/web.xml content:
 
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <web-app id="WebApp_ID" version="2.4"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://java.sun.com/xml/ns/javaee"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/jee
+                                 http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+        <servlet>
+            <servlet-name>spring</servlet-name>
+            <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+            <load-on-startup>1</load-on-startup>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>spring</servlet-name>
+            <url-pattern>/</url-pattern>
+        </servlet-mapping>
+        <context-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-servlet.xml</param-value>
+        </context-param>
+        <listener>
+            <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+    </web-app>
 
-07.- Inside of webapp and WEB-INF we will need next files:
-    - webapp/test.jsp
-    - webapp/WEB-INF/web.xml 
+09.- Add file using: File / New / XML Configuration File / Spring Config
+     with name and path:
+        webapp/WEB-INF/spring-servlet.xml
 
+     NOTE: When you add this file will appear a notification that says
+     Frameworks detected, and you will have to click on 'Configure' and
+     finally click on OK button.
 
-07.- In the case of IntelliJ will create the needed folder as web and
-    inside:
-        web/WEB-INF/web.xml
-        web/WEB-INF/applicationContext.xml
-        web/WEB-INF/dispatcher-servlet.xml
+10.- The content of file webapp/WEB-INF/spring-servlet.xml:
 
-    Add the next line inside <beans /> in applicationContext.xml 
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:context="http://www.springframework.org/schema/context"
+           xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
         <context:component-scan base-package="com.myproject" />
+    </beans>
 
-08.- Add next Class:
+11.- Add next Class:
         com.myproject.util.AppConfig
 
     With the next code:
+        package com.myproject.util;
+
+        import org.springframework.context.annotation.Bean;
+        import org.springframework.context.annotation.Configuration;
+        import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+        import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+        import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+        import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+        /**
+         * Created by omaryahir on 6/22/16.
+         */
+        @Configuration
+        @EnableWebMvc
+        public class AppConfig extends WebMvcConfigurerAdapter{
+            @Bean
+            public InternalResourceViewResolver viewResolver(){
+                InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+                internalResourceViewResolver.setPrefix("/");
+                internalResourceViewResolver.setSuffix(".jsp");
+                return internalResourceViewResolver;
+            }
+
+            @Override
+            public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+               configurer.enable();
+            }
+        }
 
 
+    NOTE: You can use mac+shift+a to open action dialog.
 
-09.- Go to menu Run and Edit Configurations and inside click on '+'
+12.- Go to menu Run and Edit Configurations and inside click on '+'
     click on 34 more ... and type Tomcat. Select Tomcat Server / Local.
 
-10.- Click on Deployment and click on '+'. Select Artitact...
+13.- Click on Deployment and click on '+'. Select Artitact...
+     In the list select myproject:war exploded and after that on OK.
 
-11.- In the list select myproject:war exploded and after that on OK.
+     NOTE: You can use Fix button select my project:war exploded and
+     click on OK.
 
+14.- Click on Run and after that Run.
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
+    NOTA: You can use ctrl+alt+run
 
