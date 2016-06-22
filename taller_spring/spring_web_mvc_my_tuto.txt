@@ -1,0 +1,53 @@
+
+SPRING WEB MVC
+--------------
+
+
+MAKING THE PROJECT
+
+Here I will put step by step to make a project with spring web mvc.
+
+1.- Enter to IntelliJ and select Maven option in the middle left. / Press Next
+2.- Fill the next data:
+        GroupId:
+            com.myproject
+        ArtifactId:
+            MyProject
+        Version
+            1.0 SNAPSHOT
+3.- Fill the name of the project and location.
+4.- Add under </version> before </project> next lines:
+
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.1.4 RELEASE</version>
+        </dependency>
+    </dependencies>
+
+5.- In the folder with the name of the project second click
+    and after that select "Add Framework Support..." after
+    that select Spring MVC.
+
+    NOTE: Is possible that you will have to check the 
+    Open Module Settings
+
+
+6.- To add classes open folder of the project and locate:
+    src/main/java
+    And second click and select new class ...
+    In the text put:
+    com.myproject.controller.HomeController
+
+7.- 
+
+
+
+
+
+
+
+
