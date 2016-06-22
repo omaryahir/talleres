@@ -10,7 +10,12 @@
 
     <packaging>war</packaging>
 
-
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmv</artifactId>
+            <version>4.3.0.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 </project>
