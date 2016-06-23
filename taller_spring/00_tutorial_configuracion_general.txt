@@ -2,8 +2,53 @@
 SPRING WEB MVC
 --------------
 
+MAKING THE PROJECT USING STS (Spring Tool Suite)
 
-MAKING THE PROJECT
+Prerequisites:
+    - JRE and SDK
+    - STS
+    - Tomcat
+
+01.- Open STS
+
+02.- Click on File / New / Other or alt+mac+N
+
+03.- Select Maven Project (you can find using wizards: maven)
+
+04.- In the next window select the option:
+        Create a simple project (skip archetype selection)
+
+05.- In the next window register:
+        Group Id: com.myproject_sts
+        ArtifactId: MyProjectSTS
+        Version: 0.0.1
+        Packaging: war
+
+06.- After that click on Finish
+
+07.- When te system finished, second click on name MyProjectSTS
+     and go to Properties.
+
+08.- In the right page select "Project Facets" and after that 
+     in the last left pane click on Tab "Runtimes" add using
+     new the tomcat.
+
+09.- Check versión of Java in this case 1.7.
+
+10.- Finally click on OK.
+
+11.- After that close and reopen the project.
+
+
+        
+
+
+
+
+
+
+
+MAKING THE PROJECT WITH INTELLIJ
 
 Here I will put step by step to make a project with spring web mvc.
 
