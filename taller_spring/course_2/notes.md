@@ -1,14 +1,13 @@
 #### COURSE
 
 
-Topic: Development environment
+1. Development environment
 -------------------------------
 
 Download STS (Spring Tool Suite)
 Download and install Tomcat
 
-
-Topic: Structure of a J2EE Project
+2. Structure of a J2EE Project
 -----------------------------------
 
 ## WEB-INF/web.xml 
