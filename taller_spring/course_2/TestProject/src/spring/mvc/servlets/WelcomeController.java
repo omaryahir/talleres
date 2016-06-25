@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class WelcomeController
  */
-@WebServlet("/WelcomeController")
+//@WebServlet("/WelcomeController")
 public class WelcomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

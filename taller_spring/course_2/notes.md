@@ -30,9 +30,7 @@ Inside you can define:
     src/spring.mvc.servlets/
 3. Add Servlets with second click on the package before, with clase name to WelcomeController.
 4. Click on 1.Next, 2.Next, 3.Next, Finish.
+    
 
-11:26
-
-
-
+### 
 
