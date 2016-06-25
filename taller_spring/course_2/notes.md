@@ -2,13 +2,13 @@
 
 
 1. Development environment
--------------------------------
+--------------------------
 
 Download STS (Spring Tool Suite)
 Download and install Tomcat
 
 2. Structure of a J2EE Project
------------------------------------
+------------------------------
 
 ## WEB-INF/web.xml 
 
@@ -32,5 +32,22 @@ Inside you can define:
 4. Click on 1.Next, 2.Next, 3.Next, Finish.
     
 
-### 
+3. MVC on Spring Web MVC
+------------------------
+- It is a design pattern used in WEB based Java Enterprise Applications.
+- MVC pattern is also implemented in other WEB frameworks as well.
+
+MVC         ACTION
+MODEL       Includes business specific logic
+VIEW        Is responsible for rendering (displaying) model objects 
+            inside the user interface using different view technologies
+            (JSP, Facelets or Velocity) (browser)
+CONTROLLER  Receives user inputs and calls model object on handler mappings 
+            and pass model objects to views in order to display output inside 
+            the view layer.
+
+
+How to configure Spring MVC applications in web.xml file
+
+
 

@@ -9,6 +9,10 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+  	<param-name>systemBossEmail</param-name>
+  	<param-value>omaryahir@hotmail.com</param-value>
+  </context-param>
   <servlet>
     <servlet-name>WelcomeServlet</servlet-name>
     <servlet-class>spring.mvc.servlets.WelcomeController</servlet-class>
