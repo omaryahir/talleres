@@ -1,0 +1,4 @@
+Development Configuration
+
+1.- Download STS (Spring Tool Suite)
+2.- 
