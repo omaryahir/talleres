@@ -23,5 +23,16 @@ Inside you can define:
 - Security rights and etc. (ssl)
 
 
+## First Steps to create new project on STS
+
+1. Click on File / New / Dynamic Project (becareful with the path)
+2. Add next package on Java Resources:
+    src/spring.mvc.servlets/
+3. Add Servlets with second click on the package before, with clase name to WelcomeController.
+4. Click on 1.Next, 2.Next, 3.Next, Finish.
+
+11:26
+
+
 
 
