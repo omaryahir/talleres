@@ -17,4 +17,18 @@
     <servlet-name>WelcomeServlet</servlet-name>
     <url-pattern>/WelcomeController</url-pattern>
   </servlet-mapping>
+<!--   <filter>
+  	<filter-name>UrlFilter</filter-name>
+  	<filter-class></filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>UrlFilter</filter-name>
+  	<url-pattern>/user/*</url-pattern>
+  </filter-mapping> -->
+  <error-page>
+  	<error-code>404</error-code> <!-- page not found -->
+  	<location>
+  		/error.jsp
+  	</location>
+  </error-page>
 </web-app>
