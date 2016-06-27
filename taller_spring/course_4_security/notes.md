@@ -52,7 +52,14 @@ $ mvn spring-boot:run
 In this section I had an error in pom.xml because I need to compile in java 1.7
 and the project by default has 1.8, so if you need you have to change it.
 
+### Package the project
 
+$ mvn package
+$ java -jar target/*.jar
+
+
+--------
+Front End Assets
 
 
 
