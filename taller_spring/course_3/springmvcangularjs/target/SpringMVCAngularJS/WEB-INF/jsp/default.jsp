@@ -3,8 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Spring MVC + AngularJS</title>
-        <!--<spring src="https://ajax.google.com/ajax/libs/angularjs/1.0.8/angular.min.js"></spring>-->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
         <script>
             var app=angular.module('myApp', []);
 
