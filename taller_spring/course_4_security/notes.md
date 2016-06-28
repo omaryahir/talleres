@@ -3,22 +3,28 @@ Create project using terminal
 
 ### Using curl
 
+```shell
 $ mkdir ui && cd ui
 $ curl https://start.spring.io/starter.tgz -d style=web -d style=security -d name=ui | tar -xzvf-
+```
 
 ### Using Spring Boot CLI
 
 To install on OSX you can use brew:
 
+```shell
 $ brew tap pivotal/tap
 $ brew install springboot
+```
 
 Otherwise you can download from:
 http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started-installing-the-cli
 
 To make the project use:
 
+```shell
 $ spring init --dependencies web,security ui/ && cd ui
+```
 
 ### Using STS 
 
