@@ -103,9 +103,7 @@ the message Hello World.
 
 ### Adding Dynamic Content
 
-
-
-
+--- Screen Shot 2016-06-27 at 12.04.37 PM
 
 
 
