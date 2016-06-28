@@ -82,11 +82,31 @@ $ brew install npm
 $ npm i angularjs-bootstrap-jquery
 ```
 
+### Front End Assets
+
+After install you have to fix the paths of the libraries and 
+you have to add to the project.
+
+### Create the Angular Application
+
+You have to add in a file src/main/resources/static/js/hello.js
+
+```shell
+angular.module('hello', [])
+    .controller('home', function ($scope) {
+    $scope.greeting = {id: '---', content: 'Hello World !'}
+})
+```
+
+If you run the project with $ mvn spring-boot:run you will see
+the message Hello World.
+
+### Adding Dynamic Content
 
 
 
----------
-Front End Assets
+
+
 
 
 
