@@ -42,7 +42,6 @@ export PATH=$PATH:$M2_HOME/bin
 
 http://www.mkyong.com/maven/install-maven-on-mac-osx/
 
-
 ### Run the project
 
 Use:
@@ -54,11 +53,27 @@ and the project by default has 1.8, so if you need you have to change it.
 
 ### Package the project
 
+```shell
 $ mvn package
 $ java -jar target/*.jar
+```
+
+### Installing angularjs-bootstrap-jquery
+
+The tutorial of the reference is used wro4j I will use
+here npm to install the libraries if you don't have it
+use:
+
+```shell
+$ brew install npm
+$ npm i angularjs-bootstrap-jquery
+´´´
 
 
---------
+
+
+
+---------
 Front End Assets
 
 
