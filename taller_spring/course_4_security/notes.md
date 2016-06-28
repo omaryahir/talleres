@@ -28,14 +28,17 @@ $ spring init --dependencies web,security ui/ && cd ui
 
 ### Using STS 
 
+```shell
 File -> New -> Spring Starter Project
-
+```
 
 ### MVN install
 
 If you are on OSX you can use homebrew:
 
+```shell
 $ brew install maven
+```
 
 We will need mvn so we will download from:
 http://maven.apache.org/download.cgi
@@ -43,8 +46,10 @@ http://maven.apache.org/download.cgi
 Extract the file apache-maven-3.3.9-bin.tar.gz and add to 
 bash_profile or zshrc.
 
+```shell
 export M2_HOME=/path/to/apache-maven-3.3.9
 export PATH=$PATH:$M2_HOME/bin
+```
 
 http://www.mkyong.com/maven/install-maven-on-mac-osx/
 
@@ -52,7 +57,9 @@ http://www.mkyong.com/maven/install-maven-on-mac-osx/
 
 Use:
 
+```shell
 $ mvn spring-boot:run 
+```
 
 In this section I had an error in pom.xml because I need to compile in java 1.7
 and the project by default has 1.8, so if you need you have to change it.
@@ -67,14 +74,13 @@ $ java -jar target/*.jar
 ### Installing angularjs-bootstrap-jquery
 
 The tutorial of the reference is used wro4j I will use
-here npm to install the libraries if you don't have it
+here npm to install the libraries if you don´t have it
 use:
 
 ```shell
 $ brew install npm
 $ npm i angularjs-bootstrap-jquery
-´´´
-
+```
 
 
 
