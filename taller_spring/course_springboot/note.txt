@@ -1,0 +1,16 @@
+In the case you are using proxy you have to add:
+
+<proxies>
+  <proxy>
+    <active>true</active>
+    <protocol>http</protocol>
+    <host>proxy.somewhere.com</host>
+    <port>8080</port>
+    <username>proxyuser</username>
+    <password>somepassword</password>
+    <nonProxyHosts>www.google.com|*.somewhere.com</nonProxyHosts>
+  </proxy>
+</proxies>
+
+To the file:
+/usr/local/Cellar/maven/3.3.9/libexec/conf
