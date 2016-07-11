@@ -1,1 +1,6 @@
 Next: 10.- Curso AngularJS - Filters
+
+What's next:
+- CODF - Complete these courses. [PRO]
+- PLAT - Forms
+- UDEM - Spring with AngularJS
