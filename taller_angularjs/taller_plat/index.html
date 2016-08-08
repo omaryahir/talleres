@@ -13,6 +13,17 @@
             background-color: blue;
             color: white;
         }
+        .ng-valid.ng-dirty {
+            border: 2px solid green;
+        }
+        .ng-invalid.ng-dirty {
+            border: 2px solid red;
+        }
+        form.ng-valid.ng-dirty, form.ng-invalid.ng-dirty {
+            border: none;
+        }
+
+
     </style>
 </head>
 <body>
@@ -86,13 +97,21 @@
 
 
             <form name="commentsForm" ng-submit="commentsForm.$valid && comments.addComment()" novalidate>
-                Email: <input type="email" ng-model="comments.comment.email" ng-disabled="comments.comment.anonymous" ng-required="!comments.comment.anonymous" />
+
+                Email:
+                <input type="email" ng-model="comments.comment.email" ng-disabled="comments.comment.anonymous" ng-required="!comments.comment.anonymous" />
                 <br>                
-                Comment: <br>
+
+                Comment:
+                <br>
                 <textarea ng-model="comments.comment.body" required></textarea>
                 <br>
-                Anonymous: <input type="checkbox" ng-change="comments.annonymousChange()" ng-model="comments.comment.anonymous" />
+
+                Anonymous: 
+                <input type="checkbox" ng-change="comments.annonymousChange()" ng-model="comments.comment.anonymous" />
+
                 <button type="submit">Comment</button>
+
             </form>
             <h2 ng-if="!commentsForm.$valid">
                 Formulario no válido.
