@@ -9,6 +9,10 @@
         img {
             width: 100px;
         }
+        button.selected {
+            background-color: blue;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -17,18 +21,45 @@
     {{'Hola Mundo !'}} - {{ 3 + 4 }} - {{"Hello" + " " + "World!" }} - {{[1,2,3].length}}
 
 
-    <div ng-controller="PlayerController as playercontroller">
-    <h1>{{playercontroller.player.name | uppercase }} #{{playercontroller.player.number}}</h1>
-    <br>{{playercontroller.player.birthdate | date:'dd/MM/yyyy hh:mm:ssa' }}
-    <h2>{{playercontroller.player.position}}</h2>
-    <img src="{{playercontroller.player.image}}">
-    <ul>
-        <li>Kick: {{playercontroller.player.kick}}%</li>
-        <li>Speed: {{playercontroller.player.speed}}%</li>
-        <li>Force: {{playercontroller.player.force}}%</li>
-        <li>Skill: {{playercontroller.player.skill}}%</li>
-        <li>Techniques: {{playercontroller.player.techniques.join(', ')}}</li>
-    </ul>
+    <div ng-init="tab = 1" ng-controller="PlayerController as playercontroller">
+
+        <h1>{{playercontroller.player.name | uppercase }} #{{playercontroller.player.number}}</h1>
+
+        tabs:
+        <button ng-class="{selected: tab === 1}" ng-click="tab = 1">Parte 1</button>
+        <button ng-class="{selected: tab === 2}" ng-click="tab = 2">Parte 2 </button>
+
+        <div ng-show="tab === 1">
+        <h2>{{playercontroller.player.position}}</h2>
+        Birthdate: {{playercontroller.player.birthdate | date:'dd/MM/yyyy hh:mm:ssa' }}
+        <br>
+        <img src="{{playercontroller.player.image}}">
+        </div>
+
+
+        <div ng-show="tab === 2">
+        <ol>
+            <li>Kick:   <b>{{playercontroller.player.kick}}%</b></li>
+            <li>Speed:  <b>{{playercontroller.player.speed}}%</b></li>
+            <li>Force:  <b>{{playercontroller.player.force}}%</b></li>
+            <li>Skill:  <b>{{playercontroller.player.skill}}%</b></li>
+            <li>Techniques:
+                <ul>
+                    <li ng-repeat="type in playercontroller.player.techniques" >{{type | uppercase}}</li>
+                </ul>
+            </li>
+            <li>Champeon:
+               <ul>
+                    <li ng-repeat="champeon in playercontroller.player.champeon">
+                        {{champeon.year}} - <b>{{champeon.position}}</b>
+                        <span ng-show="$last">Es el último</span>
+                        <span ng-show="$first">Es el primero</span>
+                    </li>
+               </ul> 
+            </li>
+        </ol>
+        </div>
+
     </div>
 </body>
 </html>
