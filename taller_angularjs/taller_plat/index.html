@@ -20,16 +20,17 @@
     Using Mustache: ... <br>
     {{'Hola Mundo !'}} - {{ 3 + 4 }} - {{"Hello" + " " + "World!" }} - {{[1,2,3].length}}
 
-
-    <div ng-init="tab = 1" ng-controller="PlayerController as playercontroller">
+    <div ng-controller="PlayerController as playercontroller">
 
         <h1>{{playercontroller.player.name | uppercase }} #{{playercontroller.player.number}}</h1>
 
-        tabs:
-        <button ng-class="{selected: tab === 1}" ng-click="tab = 1">Parte 1</button>
-        <button ng-class="{selected: tab === 2}" ng-click="tab = 2">Parte 2 </button>
+        <div ng-controller="TabsController as tabs">
+            tabs:
+            <button ng-class="{selected: tabs.tab === 1}" ng-click="tabs.selectTab(1)">Parte 1</button>
+            <button ng-class="{selected: tabs.tab === 2}" ng-click="tabs.selectTab(2)">Parte 2 </button>
 
-        <div ng-show="tab === 1">
+
+        <div ng-show="tabs.tab === 1">
         <h2>{{playercontroller.player.position}}</h2>
         Birthdate: {{playercontroller.player.birthdate | date:'dd/MM/yyyy hh:mm:ssa' }}
         <br>
@@ -37,7 +38,7 @@
         </div>
 
 
-        <div ng-show="tab === 2">
+        <div ng-show="tabs.tab === 2">
         <ol>
             <li>Kick:   <b>{{playercontroller.player.kick}}%</b></li>
             <li>Speed:  <b>{{playercontroller.player.speed}}%</b></li>
@@ -60,6 +61,7 @@
         </ol>
         </div>
 
-    </div>
+        </div> <!-- Tabs controller -->
+    </div> <!-- Player controller -->
 </body>
 </html>
