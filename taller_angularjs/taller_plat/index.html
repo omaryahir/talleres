@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app='supercampeones'>
 <head>
     <meta charset="utf-8">
     <title>Supercampeones</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="app.js"></script>
     <style>
         img {
             width: 100px;
@@ -11,15 +12,22 @@
     </style>
 </head>
 <body>
-    <div ng-controller="PlayerController">
-    <h1>Oliver Atom #10</h1>
-    <h2>Delantero</h2>
-    <img src="http://www.topkool.com/fr/wp-content/uploads/2012/12/olive-et-tom-014.jpg">
+
+    Using Mustache: ... <br>
+    {{'Hola Mundo !'}} - {{ 3 + 4 }} - {{"Hello" + " " + "World!" }} - {{[1,2,3].length}}
+
+
+    <div ng-controller="PlayerController as playercontroller">
+    <h1>{{playercontroller.player.name | uppercase }} #{{playercontroller.player.number}}</h1>
+    <br>{{playercontroller.player.birthdate | date:'dd/MM/yyyy hh:mm:ssa' }}
+    <h2>{{playercontroller.player.position}}</h2>
+    <img src="{{playercontroller.player.image}}">
     <ul>
-        <li>Kick: 99%</li>
-        <li>Speed: 90%</li>
-        <li>Force: 80%</li>
-        <li>Skill: 80%</li>
+        <li>Kick: {{playercontroller.player.kick}}%</li>
+        <li>Speed: {{playercontroller.player.speed}}%</li>
+        <li>Force: {{playercontroller.player.force}}%</li>
+        <li>Skill: {{playercontroller.player.skill}}%</li>
+        <li>Techniques: {{playercontroller.player.techniques.join(', ')}}</li>
     </ul>
     </div>
 </body>
