@@ -67,7 +67,7 @@ and the project by default has 1.8, so if you need you have to change it.
 ### Package the project
 
 ```shell
-$ mvn package
+$ mvn package               (If you have configured war so you will get .war)
 $ java -jar target/*.jar
 ```
 
