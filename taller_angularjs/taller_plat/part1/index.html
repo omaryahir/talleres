@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app='supercampeones'>
+<head>
+    <meta charset="utf-8">
+    <title>Supercampeones</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        img {
+            width: 100px;
+        }
+        button.selected {
+            background-color: blue;
+            color: white;
+        }
+        .ng-valid.ng-dirty {
+            border: 2px solid green;
+        }
+        .ng-invalid.ng-dirty {
+            border: 2px solid red;
+        }
+        form.ng-valid.ng-dirty, form.ng-invalid.ng-dirty {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    Using Mustache: ... <br>
+    {{'Hola Mundo !'}} - {{ 3 + 4 }} - {{"Hello" + " " + "World!" }} - {{[1,2,3].length}}
+
+    <div ng-controller="PlayerController as playercontroller">
+
+        <h1>{{playercontroller.player.name | uppercase }} #{{playercontroller.player.number}}</h1>
+
+        <div ng-controller="TabsController as tabs">
+            tabs:
+            <button ng-class="{selected: tabs.tab === 1}" ng-click="tabs.selectTab(1)">Parte 1</button>
+            <button ng-class="{selected: tabs.tab === 2}" ng-click="tabs.selectTab(2)">Parte 2</button>
+
+            <div ng-show="tabs.tab === 1">
+            <h2>{{playercontroller.player.position}}</h2>
+            Birthdate: {{playercontroller.player.birthdate | date:'dd/MM/yyyy hh:mm:ssa' }}
+            <br>
+            <img src="{{playercontroller.player.image}}">
+            </div>
+
+
+            <div ng-show="tabs.tab === 2">
+            <ol>
+                <li>Kick:   <b>{{playercontroller.player.kick}}%</b></li>
+                <li>Speed:  <b>{{playercontroller.player.speed}}%</b></li>
+                <li>Force:  <b>{{playercontroller.player.force}}%</b></li>
+                <li>Skill:  <b>{{playercontroller.player.skill}}%</b></li>
+                <li>Techniques:
+                    <ul>
+                        <li ng-repeat="type in playercontroller.player.techniques" >{{type | uppercase}}</li>
+                    </ul>
+                </li>
+                <li>Champeon:
+                   <ul>
+                        <li ng-repeat="champeon in playercontroller.player.champeon">
+                            {{champeon.year}} - <b>{{champeon.position}}</b>
+                            <span ng-show="$last">Es el último</span>
+                            <span ng-show="$first">Es el primero</span>
+                        </li>
+                   </ul> 
+                </li>
+            </ol>
+            </div>
+
+
+
+            <div ng-controller="CommentsController as comments">
+            <button ng-click="comments.toggle()">Comentarios</button>
+            <div ng-show="comments.show">
+
+                <font size=4>{{comments.commentslist.length}} Comment(s):
+                <ul>
+                    <li ng-repeat="c in comments.commentslist">
+                        <b>{{c.body}}</b><br>
+                        Comment by: 
+                        <a ng-if="!c.anonymous" href="mailto:{{c.email}}">{{c.email}}</a>
+                        <em ng-if="c.anonymous">Anonymous</em>
+                        at {{c.date|date:"medium"}} 
+                        <span ng-show="$last"><br><br>Preview</span>
+                    </li>
+
+                    <li><b>{{comments.comment.body}}</b><br>
+                        Comment by: 
+                        <a ng-if="!comments.comment.anonymous" href="mailto:{{comments.comment.email}}">{{comments.comment.email}}</a>
+                        <em ng-if="comments.comment.anonymous">Anonymous</em>                   
+                    </li>
+                </ul>
+
+
+                <form name="commentsForm" ng-submit="commentsForm.$valid && comments.addComment()" novalidate>
+
+                    Email:
+                    <input type="email" ng-model="comments.comment.email" ng-disabled="comments.comment.anonymous" ng-required="!comments.comment.anonymous" />
+                    <br>                
+
+                    Comment:
+                    <br>
+                    <textarea ng-model="comments.comment.body" required></textarea>
+                    <br>
+
+                    Anonymous: 
+                    <input type="checkbox" ng-change="comments.annonymousChange()" ng-model="comments.comment.anonymous" />
+
+                    <button type="submit">Comment</button>
+
+                </form>
+                <h2 ng-if="!commentsForm.$valid">
+                    Formulario no válido.
+                </h2>
+
+
+            </div> <!-- Tab 3 Form -->
+            </div>
+
+        </div> <!-- Tabs controller -->
+
+
+
+    </div> <!-- Player controller -->
+</body>
+</html>
