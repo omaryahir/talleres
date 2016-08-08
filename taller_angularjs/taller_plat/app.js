@@ -27,12 +27,33 @@
   });
 
   app.controller('TabsController', function(){
-    
-    this.tab = 1
-
+    this.tab = 1;
     this.selectTab = function (tab) {
       this.tab = tab;
     };
+
+  });
+
+  app.controller('CommentsController', function (){
+    this.commentslist = [];
+    this.comment = {};
+    this.show = false;
+    this.toggle = function() {
+      this.show = !this.show;
+    };
+
+    this.annonymousChange = function() {
+      if (this.comment.anonymous) {
+        this.comment.email = "";
+      }
+    };
+
+    this.addComment = function () {
+      this.comment.date = Date.now();
+      this.commentslist.push(this.comment);
+      this.comment = {};
+    };
+
 
   });
 

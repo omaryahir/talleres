@@ -27,8 +27,7 @@
         <div ng-controller="TabsController as tabs">
             tabs:
             <button ng-class="{selected: tabs.tab === 1}" ng-click="tabs.selectTab(1)">Parte 1</button>
-            <button ng-class="{selected: tabs.tab === 2}" ng-click="tabs.selectTab(2)">Parte 2 </button>
-
+            <button ng-class="{selected: tabs.tab === 2}" ng-click="tabs.selectTab(2)">Parte 2</button>
 
         <div ng-show="tabs.tab === 1">
         <h2>{{playercontroller.player.position}}</h2>
@@ -61,7 +60,52 @@
         </ol>
         </div>
 
+
+
+        <div ng-controller="CommentsController as comments">
+        <button ng-click="comments.toggle()">Comentarios</button>
+        <div ng-show="comments.show">
+
+            <font size=4>{{comments.commentslist.length}} Comment(s):
+            <ul>
+                <li ng-repeat="c in comments.commentslist">
+                    <b>{{c.body}}</b><br>
+                    Comment by: 
+                    <a ng-if="!c.anonymous" href="mailto:{{c.email}}">{{c.email}}</a>
+                    <em ng-if="c.anonymous">Anonymous</em>
+                    at {{c.date|date:"medium"}} 
+                    <span ng-show="$last"><br><br>Preview</span>
+                </li>
+
+                <li><b>{{comments.comment.body}}</b><br>
+                    Comment by: 
+                    <a ng-if="!comments.comment.anonymous" href="mailto:{{comments.comment.email}}">{{comments.comment.email}}</a>
+                    <em ng-if="comments.comment.anonymous">Anonymous</em>                   
+                </li>
+            </ul>
+
+
+            <form name="commentsForm" ng-submit="commentsForm.$valid && comments.addComment()" novalidate>
+                Email: <input type="email" ng-model="comments.comment.email" ng-disabled="comments.comment.anonymous" ng-required="!comments.comment.anonymous" />
+                <br>                
+                Comment: <br>
+                <textarea ng-model="comments.comment.body" required></textarea>
+                <br>
+                Anonymous: <input type="checkbox" ng-change="comments.annonymousChange()" ng-model="comments.comment.anonymous" />
+                <button type="submit">Comment</button>
+            </form>
+            <h2 ng-if="!commentsForm.$valid">
+                Formulario no válido.
+            </h2>
+
+
+        </div> <!-- Tab 3 Form -->
+        </div>
+
         </div> <!-- Tabs controller -->
+
+
+
     </div> <!-- Player controller -->
 </body>
 </html>
