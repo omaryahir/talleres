@@ -1,3 +1,4 @@
 .DS_Store
 **/env/
 /taller_spring/course_netbeans/persons/nbproject/private/
+node_modules/
