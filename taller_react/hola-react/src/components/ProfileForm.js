@@ -4,8 +4,14 @@ import './styles/ProfileForm.css';
 
 class ProfileForm extends React.Component {
 
+    state = {
+        name: 'Write your name here...'
+    }
+
     handleChange = (e) => {
-        console.log({ name: e.target.name, value: e.target.value });
+        this.setState({
+            [e.target.name]: e.target.value,
+        })
     }
 
     handleClick = (e) => {
@@ -13,7 +19,8 @@ class ProfileForm extends React.Component {
     }
 
     handleSubmit = (e) => {
-        console.log("handle submit !!!")
+        console.log("handle submit !!!");                
+        console.log(this.state);
     }
 
 
@@ -26,17 +33,32 @@ class ProfileForm extends React.Component {
 
                         <div className="inputForm">
                             <label htmlFor="name">Name:</label>
-                            <input onChange={this.handleChange} type="text" name="name" />
+                            <input 
+                                onChange={this.handleChange} 
+                                type="text" 
+                                name="name" 
+                                value={this.state.name}
+                            />
                         </div>
 
                         <div className="inputForm">
                             <label htmlFor="jobRole">Role:</label>
-                            <input onChange={this.handleChange} type="text" name="jobRole" />
+                            <input 
+                                onChange={this.handleChange} 
+                                type="text" 
+                                name="jobRole"
+                                value={this.state.jobRole} 
+                            />
                         </div>
 
                         <div className="inputForm">
                             <label htmlFor="accountName">Account:</label>
-                            <input onChange={this.handleChange} type="text" name="accountName" />
+                            <input 
+                                onChange={this.handleChange} 
+                                type="text" 
+                                name="accountName" 
+                                value={this.state.accountName}
+                            />
                         </div>
 
                         <button type="submit" onClick={this.handleClick}>Save</button>
