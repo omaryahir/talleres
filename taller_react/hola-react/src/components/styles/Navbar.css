@@ -1,0 +1,10 @@
+div.Navbar {
+    border-bottom: 4px solid gray;
+    background-color: black;
+    color: white;
+    font-weight: bold;    
+    line-height: 50px;    
+    padding-left: 80px;
+    vertical-align: middle;
+    width: 100%;    
+}

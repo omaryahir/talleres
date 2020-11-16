@@ -1,0 +1,20 @@
+div.Profile {
+    border-radius: 20px;
+    border: 1px solid gray;
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+    padding: 10px;
+    width: 500px;
+}
+div.Profile div.image {
+    float: left;
+    width: 120px;
+}
+div.Profile div.name{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+div.Profile div.footer{
+    color:gray;
+    text-align: right;
+}
