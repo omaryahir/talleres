@@ -8,13 +8,21 @@ class ProfileForm extends React.Component {
         console.log({ name: e.target.name, value: e.target.value });
     }
 
+    handleClick = (e) => {
+        console.log("button was clicked");
+    }
+
+    handleSubmit = (e) => {
+        console.log("handle submit !!!")
+    }
+
 
     render () {
         return (
             <div className="ProfileForm"> 
                 <div className="fields"> 
                     <h1> New Person </h1>
-                    <form action="">
+                    <form onSubmit={this.handleSubmit} action="">
 
                         <div className="inputForm">
                             <label htmlFor="name">Name:</label>
@@ -31,7 +39,7 @@ class ProfileForm extends React.Component {
                             <input onChange={this.handleChange} type="text" name="accountName" />
                         </div>
 
-                        <button>Save</button>
+                        <button type="submit" onClick={this.handleClick}>Save</button>
                     </form>
 
                 </div>
