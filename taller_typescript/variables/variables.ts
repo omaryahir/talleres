@@ -207,3 +207,35 @@ console.log(languages);
 
 languages.push('go');
 console.log(languages);
+
+// Tuple
+
+let devices: [number, string];
+devices = [1, 'galaxyTab'];
+
+console.log(devices);
+console.log(devices[1]);
+
+// the type is identified in the string item
+console.log(devices[1].length); 
+
+// id, type, active
+let vehicle: [number, string, boolean]; // <-- ideally each type is different, but next example is valid.
+vehicle = [1, 'truck', true];
+console.log('Vehicle', vehicle)
+
+let test: [number, number, number, string];
+test = [1,1,1,'ok'];
+console.log(test);
+
+// Array of Tuples
+
+let vehicles: [number, string, boolean][] = [];
+// we need to initialize ................... ^, next line triggers an error.
+// let vehicles: [number, string, boolean][];
+
+vehicles.push([1, 'car', true]);
+vehicles.push([2, 'truck', true]);
+console.log(vehicles);
+
+
