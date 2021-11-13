@@ -36,4 +36,21 @@ $ tsc --watch testing.ts
 $ tsc --init
 
 
+## variables 
+
+**explicit**
+variableName: Datatype
+(postfix notation)
+
+**inflicted**
+variableName = value
+^ Typescript will assign 
+  the type with the initial value
+
+there primitive/basic types 
+
+### number, boolean and string
+
+take a look to the file variables.ts
+
 
