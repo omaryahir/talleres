@@ -50,7 +50,95 @@ myNumber2 = 'hola';
 console.log(myNumber2);
 // Void
 // Explicit Type
+// Use of void is default in this scenario
 function printSpecs(Computer) {
-    console.log('Computer Specs', Computer.cpu, Computer.memory, Computer.disk);
+    console.log(' 1 Computer Specs', Computer.cpu, Computer.memory, Computer.disk);
 }
 printSpecs({ cpu: "Intel", memory: "16GB", disk: "512GB" });
+// Use of void is default in this scenario
+function printSpecsTemplate(computer) {
+    console.log("\n        2 Computer Specs:\n        cpu: " + computer.cpu + "\n        memory: " + computer.memory + "\n        disk: " + computer.disk + "\n    ");
+}
+printSpecsTemplate({ cpu: "Intel", memory: "16GB", disk: "512GB" });
+var nodata;
+// Never
+function printSomething(something) {
+    throw new Error("" + something);
+}
+// printSomething('test');
+// OUTPUT:
+// throw new Error("" + something);
+// ^
+// Error: test
+// at printSomething (/Users/omendoza/Documents/zrepos/talleres/taller_typescript/variables/variables.js:66:11)
+// at Object.<anonymous> (/Users/omendoza/Documents/zrepos/talleres/taller_typescript/variables/variables.js:68:1)
+// at Module._compile (node:internal/modules/cjs/loader:1095:14)
+// at Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)
+// at Module.load (node:internal/modules/cjs/loader:975:32)
+// at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+// at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+// at node:internal/main/run_main_module:17:47
+try {
+    printSomething('test');
+}
+catch (error) {
+    console.log('fail!');
+}
+// Never is usually to throw error or terminate this is going 
+// to return this error:
+// function mynerver(): never {
+//                      ~~~~~
+// A function returning 'never' cannot have a reachable end point.
+// function mynerver(): never {
+//     console.log('this is working');
+// }
+// Other edge types Null / Undefined
+var myundefined;
+var mynull;
+mynull = null;
+myundefined = undefined;
+console.log(mynull, myundefined);
+// Object vs object
+var o;
+o = { prop: 0 }; // OK
+o = []; // OK
+// o = 42; // Error
+// o = "string"; // Error
+// o = false; // Error
+// o = null; // Error
+// o = undefined; // Error
+console.log(o);
+var p; // or Object -- this is an instanceof Object from TS
+console.log(o instanceof Object);
+p = { prop: 0 }; // OK
+p = []; // OK
+p = 42; // OK
+p = "string"; // OK
+p = false; // OK
+// p = null; // Error
+// p = undefined; // Error
+console.log(p);
+// Run this using:
+// $ tsc variables/variables.ts && node variables/variables.js
+// Array 
+// using brackets
+var fruits;
+fruits = ['apple', 'orange', 'grapes'];
+// fruits = ['test', 1]
+//                   ^ error TS2322: Type 'number' is not assignable to type 'string'.
+console.log(fruits);
+// brackets - corchetes
+// braces - llaves
+// using Array<type>
+var languages;
+languages = ['vb6', 'java', 'php', 'js', 'python', 'terraform', 'ts'];
+// languages = [1]
+//              ^ error TS2322: Type 'number' is not assignable to type 'string'.
+console.log(languages);
+console.log(languages[5]);
+// Array Properties
+languages.sort();
+console.log(languages.length);
+console.log(languages);
+languages.push('go');
+console.log(languages);
