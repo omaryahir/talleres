@@ -35,10 +35,9 @@ console.log(myTemplate);
 //  firstName: Omar
 //  lastName: Mendoza
 //  phoneNumber: 12314
-phoneNumber = 54321;
-console.log(myTemplate);
-// output:
-//  Flight
-//  firstName: Omar
-//  lastName: Mendoza
-//  phoneNumber: 12314
+// Any 
+var myNumber;
+myNumber = 1;
+console.log(myNumber);
+myNumber = 'hola';
+console.log(myNumber);

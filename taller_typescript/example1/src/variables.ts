@@ -52,3 +52,10 @@ console.log(myTemplate);
 //  phoneNumber: 12314
 
 
+// Any 
+let myNumber: any;
+myNumber = 1;
+console.log(myNumber);
+myNumber = 'hola';
+console.log(myNumber);
+
