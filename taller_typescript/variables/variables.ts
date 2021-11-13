@@ -68,3 +68,4 @@ myNumber2 = 2;
 console.log(myNumber2);
 myNumber2 = 'hola';
 console.log(myNumber2);
+
