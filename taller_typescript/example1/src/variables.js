@@ -36,8 +36,15 @@ console.log(myTemplate);
 //  lastName: Mendoza
 //  phoneNumber: 12314
 // Any 
+// Explicit
 var myNumber;
 myNumber = 1;
 console.log(myNumber);
 myNumber = 'hola';
 console.log(myNumber);
+// Inflicted
+var myNumber2;
+myNumber2 = 2;
+console.log(myNumber2);
+myNumber2 = 'hola';
+console.log(myNumber2);

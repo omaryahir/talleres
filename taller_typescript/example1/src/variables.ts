@@ -53,9 +53,18 @@ console.log(myTemplate);
 
 
 // Any 
+
+// Explicit
 let myNumber: any;
 myNumber = 1;
 console.log(myNumber);
 myNumber = 'hola';
 console.log(myNumber);
 
+
+// Inflicted
+let myNumber2;
+myNumber2 = 2;
+console.log(myNumber2);
+myNumber2 = 'hola';
+console.log(myNumber2);
