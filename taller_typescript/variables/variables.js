@@ -48,3 +48,9 @@ myNumber2 = 2;
 console.log(myNumber2);
 myNumber2 = 'hola';
 console.log(myNumber2);
+// Void
+// Explicit Type
+function printSpecs(Computer) {
+    console.log('Computer Specs', Computer.cpu, Computer.memory, Computer.disk);
+}
+printSpecs({ cpu: "Intel", memory: "16GB", disk: "512GB" });
