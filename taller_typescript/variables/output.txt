@@ -1,0 +1,35 @@
+
+    Flight
+    firstName: Omar
+    lastName: Mendoza
+    phoneNumber: 12314
+
+1
+hola
+2
+hola
+ 1 Computer Specs Intel 16GB 512GB
+
+        2 Computer Specs:
+        cpu: Intel
+        memory: 16GB
+        disk: 512GB
+    
+fail!
+null undefined
+[]
+true
+false
+[ 'apple', 'orange', 'grapes' ]
+[ 'vb6', 'java', 'php', 'js', 'python', 'terraform', 'ts' ]
+terraform
+7
+[ 'java', 'js', 'php', 'python', 'terraform', 'ts', 'vb6' ]
+[ 'java', 'js', 'php', 'python', 'terraform', 'ts', 'vb6', 'go' ]
+[ 1, 'galaxyTab' ]
+galaxyTab
+9
+Vehicle [ 1, 'truck', true ]
+[ 1, 1, 1, 'ok' ]
+[ [ 1, 'car', true ], [ 2, 'truck', true ] ]
+truck
