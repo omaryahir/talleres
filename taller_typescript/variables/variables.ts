@@ -273,5 +273,3 @@ console.log(myFavoriteFlavor);
 
 // myFavoriteFlavor = 'test';
 // ^ error TS2322: Type '"test"' is not assignable to type 'Flavors'.
-
-
