@@ -164,3 +164,4 @@ vehicles.push([1, 'car', true]);
 vehicles.push([2, 'truck', true]);
 console.log(vehicles);
 console.log(vehicles[1][1]);
+// Enum
