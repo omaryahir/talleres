@@ -241,3 +241,37 @@ console.log(vehicles[1][1]);
 
 // Enum
 
+const car = 'Car';
+const airplane = 'Airplane';
+const truck = 'Truck';
+
+enum Vehicle {
+    car,
+    airplane,
+    truck
+}
+
+const myTypeCar: Vehicle = Vehicle.airplane;
+const myTypeCar3 = Vehicle.truck;
+
+console.log('myTypeCar', myTypeCar);
+// output: myTypeCar 1
+console.log('Vehicule[myTypeCar]', Vehicle[myTypeCar]);
+// output: Vehicule[myTypeCar] airplane
+
+
+enum Flavors {
+    chocolate = 'Chocolate',
+    vanilla = 'Vanilla',
+    strawberry = 'Strawberry'
+}
+
+let myFavoriteFlavor: Flavors;
+myFavoriteFlavor = Flavors.chocolate;
+console.log(myFavoriteFlavor);
+// output: Chocolate
+
+// myFavoriteFlavor = 'test';
+// ^ error TS2322: Type '"test"' is not assignable to type 'Flavors'.
+
+

@@ -165,3 +165,30 @@ vehicles.push([2, 'truck', true]);
 console.log(vehicles);
 console.log(vehicles[1][1]);
 // Enum
+var car = 'Car';
+var airplane = 'Airplane';
+var truck = 'Truck';
+var Vehicle;
+(function (Vehicle) {
+    Vehicle[Vehicle["car"] = 0] = "car";
+    Vehicle[Vehicle["airplane"] = 1] = "airplane";
+    Vehicle[Vehicle["truck"] = 2] = "truck";
+})(Vehicle || (Vehicle = {}));
+var myTypeCar = Vehicle.airplane;
+var myTypeCar3 = Vehicle.truck;
+console.log('myTypeCar', myTypeCar);
+// output: myTypeCar 1
+console.log('Vehicule[myTypeCar]', Vehicle[myTypeCar]);
+// output: Vehicule[myTypeCar] airplane
+var Flavors;
+(function (Flavors) {
+    Flavors["chocolate"] = "Chocolate";
+    Flavors["vanilla"] = "Vanilla";
+    Flavors["strawberry"] = "Strawberry";
+})(Flavors || (Flavors = {}));
+var myFavoriteFlavor;
+myFavoriteFlavor = Flavors.chocolate;
+console.log(myFavoriteFlavor);
+// output: Chocolate
+myFavoriteFlavor = 'test';
+// 
