@@ -21,17 +21,17 @@
     $ node hello.js
 
 
-## watch 
+### watch 
 how to do it in a single step ?
 Ok we can use a watch, in that matter we can just run:
 $ tsc --watch testing.ts
 
-# Learn With Examples TypeScript :)
+## Learn With Examples TypeScript :)
 
-## Init 
+### Init 
 $ tsc --init
 
-## Two types of variables 
+### Two types of variables 
 
 - Explicit
     variableName: Datatype
@@ -44,14 +44,13 @@ $ tsc --init
 
     there primitive/basic types 
 
-# Caviats:
+### Caviats:
 - In example1/ you can find an example of a petty basic structured folder
 - Usually you don't need to take care of ts conversion if you are using a framework
 
-# Run this using:
+### Run this using:
 ```bash
 tsc learnWithExamples.ts && node learnWithExamples.js
 ```
 
-# Learn with examples 
-Navigate to [learnWithExamples.ts](./learnWithExamples.ts)
+### Navigate to [learnWithExamples.ts](./learnWithExamples.ts)
