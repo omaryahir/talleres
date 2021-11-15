@@ -1,3 +1,5 @@
+// run this using:
+// $ tsc learnWithExamples.ts && node learnWithExamples.js
 
 // Number  ------------------------------------------------
 // Explicit

@@ -1,3 +1,5 @@
+// run this using:
+// $ tsc learnWithExamples.ts && node learnWithExamples.js
 // Number  ------------------------------------------------
 // Explicit
 var phone = 1;
@@ -295,5 +297,5 @@ var myCar2 = {
 console.log(myCar2.model);
 myCar2.model = 'Escape';
 console.log(myCar2.model);
-myCar2.year = 2006;
-console.log(myCar2.year);
+// myCar2.year = 2006
+// ^ error TS2540: Cannot assign to 'year' because it is a read-only property
