@@ -1,5 +1,5 @@
 
-// Number
+// Number  ------------------------------------------------
 // Explicit
 let phone: number = 1;
 
@@ -18,13 +18,19 @@ let hex: number = 0xf00d;
 let binary: number = 0b0010;
 let octal: number = 0o710;
 
-// Boolean
+
+
+
+// Boolean  ------------------------------------------------
 let isOk: boolean;
 isOk = true;
 // Next line will trigger an error
 // isOk = 1;
 
-// String
+
+
+
+// String  ------------------------------------------------
 let myExplit: string = 'new text';
 let myString = 'Hello World';
 
@@ -52,7 +58,9 @@ console.log(myTemplate);
 //  phoneNumber: 12314
 
 
-// Any 
+
+
+// Any  ------------------------------------------------
 
 // Explicit
 let myNumber: any;
@@ -70,7 +78,9 @@ myNumber2 = 'hola';
 console.log(myNumber2);
 
 
-// Void
+
+
+// Void  ------------------------------------------------
 
 // Explicit Type
 
@@ -105,7 +115,9 @@ interface Thing {
   }
 
 
-// Never
+
+
+// Never  ------------------------------------------------
 
 function printSomething(something: string): never {
     throw new Error(`${something}`);
@@ -148,7 +160,10 @@ mynull = null;
 myundefined = undefined;
 console.log(mynull, myundefined);
 
-// Object vs object
+
+
+
+// Object vs object  ------------------------------------------------
  
 var o: object;
 o = { prop: 0 }; // OK
@@ -176,7 +191,9 @@ console.log(p);
 // $ tsc variables/variables.ts && node variables/variables.js
 
 
-// Array 
+
+
+// Array  ------------------------------------------------ 
 
 // using brackets
 let fruits: string[];
@@ -208,7 +225,9 @@ console.log(languages);
 languages.push('go');
 console.log(languages);
 
-// Tuple
+
+
+// Tuple  ------------------------------------------------
 
 let devices: [number, string];
 devices = [1, 'galaxyTab'];
@@ -228,7 +247,10 @@ let test: [number, number, number, string];
 test = [1,1,1,'ok'];
 console.log(test);
 
-// Array of Tuples
+
+
+
+// Array of Tuples  ------------------------------------------------
 
 let vehicles: [number, string, boolean][] = [];
 // we need to initialize ................... ^, next line triggers an error.
@@ -239,7 +261,10 @@ vehicles.push([2, 'truck', true]);
 console.log(vehicles);
 console.log(vehicles[1][1]);
 
-// Enum
+
+
+
+// Enum  ------------------------------------------------
 
 const car = 'Car';
 const airplane = 'Airplane';
@@ -273,3 +298,183 @@ console.log(myFavoriteFlavor);
 
 // myFavoriteFlavor = 'test';
 // ^ error TS2322: Type '"test"' is not assignable to type 'Flavors'.
+
+
+
+
+// Type Union // Union de tipos  ------------------------------------------------
+
+let twoTypesVariable: number | string;
+
+twoTypesVariable = 1;
+console.log('twoTypeVariable as number: ', twoTypesVariable);
+// output: twoTypeVariable as number:  1
+
+twoTypesVariable = 'hola'; 
+console.log('twoTypeVariable as string: ',twoTypesVariable);
+// output: twoTypeVariable as number:  1
+
+// Alias type -- Something to create custom types 
+type myCustomType = number | string;
+let myAliasTypeVariable : myCustomType
+myAliasTypeVariable = 1;
+myAliasTypeVariable = 'hola';
+
+console.log('myAliasTypeVariable:', myAliasTypeVariable);
+// output: myAliasTypeVariable: hola
+
+// Alias type using -- valid values
+type favoriteComputer = 'Mac Mini' | 'Macbook Pro' | 'TUF' | 'Razer'
+
+let computer: favoriteComputer;
+// computer = 'hola';
+// output: error TS2322: Type '"hola"' is not assignable to type 'favoriteComputer'
+
+// computer = 'mac Mini';
+// output: error TS2322: Type '"hola"' is not assignable to type 'favoriteComputer'
+
+computer = 'Mac Mini';
+console.log(`The computer is ${computer}`);
+// output: The computer is Mac Mini
+
+
+
+
+
+// Type assertions ------------------------------------------------
+
+let anyVariable: any;
+let myStringVariable: string;
+
+anyVariable = 'Hola';
+
+if((<string>anyVariable).length == 4) {
+    myStringVariable = <string>anyVariable;
+    console.log(myStringVariable);
+}
+
+// syntax 'as'
+if((anyVariable as string).length == 4) {
+    myStringVariable = anyVariable as string;
+    console.log(myStringVariable);
+}
+
+
+
+
+
+// Functions   ------------------------------------------------
+
+type VehicleType = 'Car' | 'Truck' | 'Bus';
+                                              //? means optional :) 
+function createCar(model:string, year:number, vehicleType?: VehicleType): string {
+    return (model + ' ' + year.toString() + ' ' + vehicleType);    
+}
+
+console.log(createCar('Sentra', 2006, 'Car'));
+// output: Sentra 2006 Car
+
+console.log(createCar('Eco', 2006));
+// output: Eco 2006 undefined
+
+
+
+// Flat Array Function
+
+let createCarFlatFunction = (model: string, year: number, vehicleType?: VehicleType): object => {
+    // return {
+    //     model: model,
+    //     year: year,
+    //     vehicleType: vehicleType
+    // } // or ...
+    return { model, year, vehicleType };
+};
+console.log(createCarFlatFunction('Escape', 2006));
+// output: { model: 'Escape', year: 2006, vehicleType: undefined }
+
+
+
+// Functions with never and return 
+
+function handleError2(code: number, message: string): never | string {
+    if (message == 'myerror') {
+        throw new Error(`${message}. Code error: ${code}`);
+    } else 
+        return 'An error occurred';
+}
+
+let result = handleError2(200, 'OK');
+console.log(`result ${result}`);
+// output: result An error occurred
+
+try {
+    result = handleError2(400, 'myerror');
+    console.log(`result ${result}`);    
+} catch(error) {
+    console.log(error);
+    // error message with traceback ... 
+}
+
+console.log('ok !!');
+// output: ok !!
+
+
+
+
+
+
+
+
+// Interfaces ------------------------------------------------
+
+interface Car {
+    model: string,
+    readonly year: number,      // READONLY
+    vehicle?: Vehicle           // OPTIONAL
+}
+
+function showCar(car: Car) {
+    console.log(`- model: ${car.model}, year: ${car.year}, vehicleType: ${car.vehicle}`);
+}
+
+let myCar: Car = {
+    model: 'Sentra',
+    year: 2006,
+    vehicle: Vehicle.car
+}
+showCar(myCar);
+// output: - model: Sentra, year: 2006, vehicleType: 0
+
+showCar({
+    model: 'Eco',
+    year: 2015,
+    vehicle: Vehicle.truck
+});
+// output: - model: Eco, year: 2015, vehicleType: 2
+
+showCar({
+    model: 'Eco',
+    year: 2015
+});
+// output: - model: Eco, year: 2015, vehicleType: undefined
+
+
+// Quick const review && readonly
+
+const myConstant = '1';
+// myConstant = '2';
+// ^ error TS2588: Cannot assign to 'myConstant' because it is a constant.
+
+const myCar2: Car = {
+    model: 'Sentra',
+    year: 2006
+};
+console.log(myCar2.model);
+
+myCar2.model = 'Escape';
+console.log(myCar2.model);
+
+
+// myCar2.year = 2006
+// ^ error TS2540: Cannot assign to 'year' because it is a read-only property
+

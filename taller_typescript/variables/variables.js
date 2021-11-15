@@ -1,4 +1,4 @@
-// Number
+// Number  ------------------------------------------------
 // Explicit
 var phone = 1;
 // Next line can trigger an error type
@@ -12,12 +12,12 @@ var phone2 = 1;
 var hex = 0xf00d;
 var binary = 2;
 var octal = 456;
-// Boolean
+// Boolean  ------------------------------------------------
 var isOk;
 isOk = true;
 // Next line will trigger an error
 // isOk = 1;
-// String
+// String  ------------------------------------------------
 var myExplit = 'new text';
 var myString = 'Hello World';
 // Next lines are going to trigger an error
@@ -35,7 +35,7 @@ console.log(myTemplate);
 //  firstName: Omar
 //  lastName: Mendoza
 //  phoneNumber: 12314
-// Any 
+// Any  ------------------------------------------------
 // Explicit
 var myNumber;
 myNumber = 1;
@@ -48,7 +48,7 @@ myNumber2 = 2;
 console.log(myNumber2);
 myNumber2 = 'hola';
 console.log(myNumber2);
-// Void
+// Void  ------------------------------------------------
 // Explicit Type
 // Use of void is default in this scenario
 function printSpecs(Computer) {
@@ -61,7 +61,7 @@ function printSpecsTemplate(computer) {
 }
 printSpecsTemplate({ cpu: "Intel", memory: "16GB", disk: "512GB" });
 var nodata;
-// Never
+// Never  ------------------------------------------------
 function printSomething(something) {
     throw new Error("" + something);
 }
@@ -98,7 +98,7 @@ var mynull;
 mynull = null;
 myundefined = undefined;
 console.log(mynull, myundefined);
-// Object vs object
+// Object vs object  ------------------------------------------------
 var o;
 o = { prop: 0 }; // OK
 o = []; // OK
@@ -120,7 +120,7 @@ p = false; // OK
 console.log(p);
 // Run this using:
 // $ tsc variables/variables.ts && node variables/variables.js
-// Array 
+// Array  ------------------------------------------------ 
 // using brackets
 var fruits;
 fruits = ['apple', 'orange', 'grapes'];
@@ -142,7 +142,7 @@ console.log(languages.length);
 console.log(languages);
 languages.push('go');
 console.log(languages);
-// Tuple
+// Tuple  ------------------------------------------------
 var devices;
 devices = [1, 'galaxyTab'];
 console.log(devices);
@@ -156,7 +156,7 @@ console.log('Vehicle', vehicle);
 var test;
 test = [1, 1, 1, 'ok'];
 console.log(test);
-// Array of Tuples
+// Array of Tuples  ------------------------------------------------
 var vehicles = [];
 // we need to initialize ................... ^, next line triggers an error.
 // let vehicles: [number, string, boolean][];
@@ -164,7 +164,7 @@ vehicles.push([1, 'car', true]);
 vehicles.push([2, 'truck', true]);
 console.log(vehicles);
 console.log(vehicles[1][1]);
-// Enum
+// Enum  ------------------------------------------------
 var car = 'Car';
 var airplane = 'Airplane';
 var truck = 'Truck';
@@ -190,5 +190,110 @@ var myFavoriteFlavor;
 myFavoriteFlavor = Flavors.chocolate;
 console.log(myFavoriteFlavor);
 // output: Chocolate
-myFavoriteFlavor = 'test';
-// 
+// myFavoriteFlavor = 'test';
+// ^ error TS2322: Type '"test"' is not assignable to type 'Flavors'.
+// Type Union // Union de tipos  ------------------------------------------------
+var twoTypesVariable;
+twoTypesVariable = 1;
+console.log('twoTypeVariable as number: ', twoTypesVariable);
+// output: twoTypeVariable as number:  1
+twoTypesVariable = 'hola';
+console.log('twoTypeVariable as string: ', twoTypesVariable);
+var myAliasTypeVariable;
+myAliasTypeVariable = 1;
+myAliasTypeVariable = 'hola';
+console.log('myAliasTypeVariable:', myAliasTypeVariable);
+var computer;
+// computer = 'hola';
+// output: error TS2322: Type '"hola"' is not assignable to type 'favoriteComputer'
+// computer = 'mac Mini';
+// output: error TS2322: Type '"hola"' is not assignable to type 'favoriteComputer'
+computer = 'Mac Mini';
+console.log("The computer is " + computer);
+// output: The computer is Mac Mini
+// Type assertions ------------------------------------------------
+var anyVariable;
+var myStringVariable;
+anyVariable = 'Hola';
+if (anyVariable.length == 4) {
+    myStringVariable = anyVariable;
+    console.log(myStringVariable);
+}
+// syntax 'as'
+if (anyVariable.length == 4) {
+    myStringVariable = anyVariable;
+    console.log(myStringVariable);
+}
+//? means optional :) 
+function createCar(model, year, vehicleType) {
+    return (model + ' ' + year.toString() + ' ' + vehicleType);
+}
+console.log(createCar('Sentra', 2006, 'Car'));
+// output: Sentra 2006 Car
+console.log(createCar('Eco', 2006));
+// output: Eco 2006 undefined
+// Flat Array Function
+var createCarFlatFunction = function (model, year, vehicleType) {
+    // return {
+    //     model: model,
+    //     year: year,
+    //     vehicleType: vehicleType
+    // } // or ...
+    return { model: model, year: year, vehicleType: vehicleType };
+};
+console.log(createCarFlatFunction('Escape', 2006));
+// output: { model: 'Escape', year: 2006, vehicleType: undefined }
+// Functions with never and return 
+function handleError2(code, message) {
+    if (message == 'myerror') {
+        throw new Error(message + ". Code error: " + code);
+    }
+    else
+        return 'An error occurred';
+}
+var result = handleError2(200, 'OK');
+console.log("result " + result);
+// output: result An error occurred
+try {
+    result = handleError2(400, 'myerror');
+    console.log("result " + result);
+}
+catch (error) {
+    console.log(error);
+    // error message with traceback ... 
+}
+console.log('ok !!');
+function showCar(car) {
+    console.log("- model: " + car.model + ", year: " + car.year + ", vehicleType: " + car.vehicle);
+}
+var myCar = {
+    model: 'Sentra',
+    year: 2006,
+    vehicle: Vehicle.car
+};
+showCar(myCar);
+// output: - model: Sentra, year: 2006, vehicleType: 0
+showCar({
+    model: 'Eco',
+    year: 2015,
+    vehicle: Vehicle.truck
+});
+// output: - model: Eco, year: 2015, vehicleType: 2
+showCar({
+    model: 'Eco',
+    year: 2015
+});
+// output: - model: Eco, year: 2015, vehicleType: undefined
+// Quick const review && readonly
+var myConstant = '1';
+// myConstant = '2';
+// ^ error TS2588: Cannot assign to 'myConstant' because it is a constant.
+var myCar2 = {
+    model: 'Sentra',
+    year: 2006
+};
+console.log(myCar2.model);
+myCar2.model = 'Escape';
+console.log(myCar2.model);
+myCar2.year = 2006;
+console.log(myCar2.year);
