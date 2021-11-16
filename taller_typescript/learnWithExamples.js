@@ -297,5 +297,26 @@ var myCar2 = {
 console.log(myCar2.model);
 myCar2.model = 'Escape';
 console.log(myCar2.model);
-// myCar2.year = 2006
-// ^ error TS2540: Cannot assign to 'year' because it is a read-only property
+var player = {
+    id: 1,
+    namePlayer: 'Omar',
+    guitarCords: 6
+};
+console.log(player);
+// output: { id: 1, namePlayer: 'Omar', guitarCords: 6 }
+var newPianoPlayer = {
+    id: 1,
+    namePlayer: 'Juan',
+    pianoType: 'Organ'
+};
+console.log(newPianoPlayer);
+// just for fun :) ---------------------------------------------------------
+var myFavoriteComputers;
+myFavoriteComputers = []; // IMPORTANT we need to initialize this things
+myFavoriteComputers.push('Macbook Pro 13');
+myFavoriteComputers.push('Asus TUf 15.6');
+myFavoriteComputers.push('Macbook Pro 14');
+for (var i = 0; i <= myFavoriteComputers.length - 1; i++) {
+    console.log(myFavoriteComputers[i]);
+}
+;

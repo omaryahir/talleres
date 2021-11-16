@@ -480,3 +480,51 @@ console.log(myCar2.model);
 // myCar2.year = 2006
 // ^ error TS2540: Cannot assign to 'year' because it is a read-only property
 
+
+// inheritance in interfaces
+
+
+interface Player {
+    id: number, 
+    namePlayer: string
+}
+
+interface PianoPlayer extends Player {
+    pianoType: string
+}
+
+interface GuitarPlayer extends Player {
+    guitarCords: number
+}
+
+let player: GuitarPlayer = {
+    id: 1,
+    namePlayer: 'Omar',
+    guitarCords: 6
+}
+console.log(player);
+// output: { id: 1, namePlayer: 'Omar', guitarCords: 6 }
+
+
+let newPianoPlayer = {
+    id: 1,
+    namePlayer: 'Juan',
+    pianoType: 'Organ'
+} as PianoPlayer
+console.log(newPianoPlayer)
+// output: { id: 1, namePlayer: 'Juan', pianoType: 'Organ' }
+
+
+// just for fun :) ---------------------------------------------------------
+
+let myFavoriteComputers: Array<string>;
+myFavoriteComputers = []; // IMPORTANT we need to initialize this things
+myFavoriteComputers.push('Macbook Pro 13');
+myFavoriteComputers.push('Asus TUf 15.6');
+myFavoriteComputers.push('Macbook Pro 14');
+
+for (let i:number = 0; i <= myFavoriteComputers.length -1; i ++) {
+    console.log(myFavoriteComputers[i]);
+};
+
+
