@@ -528,3 +528,4 @@ for (let i:number = 0; i <= myFavoriteComputers.length -1; i ++) {
 };
 
 
+// Testing VSCode in github-cloud this looks really good !! :)
