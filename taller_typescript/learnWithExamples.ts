@@ -529,3 +529,24 @@ for (let i:number = 0; i <= myFavoriteComputers.length -1; i ++) {
 
 
 // Testing VSCode in github-cloud this looks really good !! :)
+
+
+// Arrays --------------------------------------------------------- 
+
+
+const myArray: number[] = [1,2,3,4];
+const myArray2: Array<number> = [1,2,3,4,10];
+
+
+// numeric order
+console.log(myArray);
+myArray.sort((a,b)=>a-b);
+console.log(myArray);
+// output: [ 1, 2, 3, 4, 10 ]
+
+// Alphabetic order
+console.log(myArray2);
+myArray2.sort();
+console.log(myArray2);
+// output: [ 1, 10, 2, 3, 4 ]
+
