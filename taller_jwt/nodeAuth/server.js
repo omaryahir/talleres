@@ -12,6 +12,17 @@ app.use(express.json());
 // parse application/x-www-form-encoded
 app.use(express.urlencoded({ extended: true }));
 
+const db = require("./app/models");
+const Role = db.role;
+const initial = require("./models/initial");
+// for prod use only:
+// db.sequelize.sync()
+db.sequelize.sync({force: true}).then(() => {
+    console.log('Drop and Resync Db');
+    initial();
+});
+
+
 app.get("/", (req, res) => {
  res.json({ message: "welcome my friend!" });
 });
