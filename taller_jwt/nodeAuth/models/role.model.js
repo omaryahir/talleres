@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true
         },
         name: {
-            type: STRING
+            type: Sequelize.STRING
         }
     });
     return Role;

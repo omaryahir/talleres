@@ -12,7 +12,7 @@ app.use(express.json());
 // parse application/x-www-form-encoded
 app.use(express.urlencoded({ extended: true }));
 
-const db = require("./app/models");
+const db = require("./models");
 const Role = db.role;
 const initial = require("./models/initial");
 // for prod use only:
@@ -26,6 +26,10 @@ db.sequelize.sync({force: true}).then(() => {
 app.get("/", (req, res) => {
  res.json({ message: "welcome my friend!" });
 });
+
+// routes 
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
 
 const PORT=process.env.PORT || 8080;
 app.listen(PORT, () => {

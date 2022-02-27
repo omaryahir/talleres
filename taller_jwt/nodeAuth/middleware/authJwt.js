@@ -31,13 +31,13 @@ isUserRole = (userId, role) => {
         }
       }
       return false;
-    }
-  }
+    });
+  });
 }
 
 
 isAdmin = (req, res, next) => {
-  if (isUserRole(req.userId, "admin") {
+  if (isUserRole(req.userId, "admin")) {
     next();
   } else {
     res.status(403).send({
@@ -48,7 +48,7 @@ isAdmin = (req, res, next) => {
 
 
 isModerator = (req, res, next) => {
-  if (isUserRole(req.userId, "moderator") {
+  if (isUserRole(req.userId, "moderator")) {
     next();
   } else {
     res.status(403).send({
@@ -58,8 +58,8 @@ isModerator = (req, res, next) => {
 } 
 
 isModeratorOrAdmin = (req, res, next) => {
-  if (isUserRole(req.userId, "moderator") ||
-     (isUserRole(req.userId, "admin") {
+  if (isUserRole(req.userId, "moderator")
+      || isUserRole(req.userId, "admin")) {
     next();
   } else {
     res.status(403).send({
