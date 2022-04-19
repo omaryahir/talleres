@@ -9,7 +9,14 @@
 
 Note: to install these tools globally you can use `-g` instead of `-D`.
 
-## Use with tsc
+#### To execute a script file use:
+
+```
+$ npx ts-node myscript.ts
+```
+Enjoy !
+
+## Using tsc
 
 ### installation
 1. get node 
