@@ -8,8 +8,8 @@ const app = express();
 // routes
 
 
-app.use('/api/user/', user);
 // http://localhost:3000/api/user
+app.use('/api/user/', user);
 
 app.listen(config.api.port, () => {
   console.log('listening ', config.api.port);
