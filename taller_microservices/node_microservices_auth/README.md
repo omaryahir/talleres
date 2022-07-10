@@ -32,4 +32,12 @@ X-Powered-By: Express
 }
 ```
 
+# Debugging 
 
+```
+# Install nodemon
+npm install -g nodemon 
+
+# Run the project using nodemon
+nodemon api/index.js
+```
