@@ -1,6 +1,7 @@
 const db = {
     'user': [
-        {id: 1, name: 'Omar'},
+        {id: 1, name: 'Ardi'},
+        {id: 2, name: 'Bobus'},
     ],
 };
 
