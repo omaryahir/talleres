@@ -2,6 +2,10 @@
 Run this using:
 tsc types-objects-array.ts
 
+or 
+
+ts-node types-objects-array.ts
+
 You wll see the issue related to the type by inference firstName is string.
 */
 
