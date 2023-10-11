@@ -20,6 +20,16 @@ const Calculator: FC = (): JSX.Element => {
             <button className="calc-btn border">7</button>
             <button className="calc-btn border">8</button>
             <button className="calc-btn border">9</button>
+        </div>
+        <div className="btn-wrapper">
+            <button className="calc-btn border">0</button>
+            <button className="calc-btn border">+</button>
+            <button className="calc-btn border">-</button>
+        </div>
+        <div className="btn-wrapper">
+            <button className="calc-btn border">/</button>
+            <button className="calc-btn border">*</button>
+            <button className="calc-btn border">=</button>
         </div>        
     </div>;
 }
