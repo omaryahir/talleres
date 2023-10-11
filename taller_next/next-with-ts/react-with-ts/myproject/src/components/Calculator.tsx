@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Button from "./Button";
 
 const Calculator: FC = (): JSX.Element => {
     return <div className="border padding-10">
@@ -7,29 +8,29 @@ const Calculator: FC = (): JSX.Element => {
             <span className="result">0</span>
         </div>
         <div className="btn-wrapper">
-            <button className="calc-btn border">1</button>
-            <button className="calc-btn border">2</button>
-            <button className="calc-btn border">3</button>
+            <Button value="1" />
+            <Button value="2" />
+            <Button value="3" />
         </div>
         <div className="btn-wrapper">
-            <button className="calc-btn border">4</button>
-            <button className="calc-btn border">5</button>
-            <button className="calc-btn border">6</button>
+            <Button value="4" />
+            <Button value="5" />
+            <Button value="6" />
         </div>
         <div className="btn-wrapper">
-            <button className="calc-btn border">7</button>
-            <button className="calc-btn border">8</button>
-            <button className="calc-btn border">9</button>
+            <Button value="7" />
+            <Button value="8" />
+            <Button value="9" />
         </div>
         <div className="btn-wrapper">
-            <button className="calc-btn border">0</button>
-            <button className="calc-btn border">+</button>
-            <button className="calc-btn border">-</button>
+            <Button value="0" />
+            <Button value="+" />
+            <Button value="-" />
         </div>
         <div className="btn-wrapper">
-            <button className="calc-btn border">/</button>
-            <button className="calc-btn border">*</button>
-            <button className="calc-btn border">=</button>
+            <Button value="/" />
+            <Button value="*" />
+            <Button value="=" />
         </div>        
     </div>;
 }
