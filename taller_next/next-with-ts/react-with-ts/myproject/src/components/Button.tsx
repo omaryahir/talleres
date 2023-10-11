@@ -1,6 +1,9 @@
 import { FC } from "react";
 
-                   // this comes from props.value
-const Button: FC<{ value: string }> = ({ value }): JSX.Element => {
+interface Props {
+    value: string
+}
+
+const Button: FC<Props> = ({ value }): JSX.Element => {
     return <button className="calc-btn border">{ value }</button>
 }
