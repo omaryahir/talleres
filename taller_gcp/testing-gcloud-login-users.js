@@ -24,7 +24,7 @@ async function main() {
   const authClient = await google.auth.getClient({
     scopes: ['https://www.googleapis.com/auth/admin.directory.user.readonly'],
   });
-  //console.log({auth});
+  console.log(authClient.email);
   
   /*const response = await compute.globalAddresses.insert({
     project: 'projectId',
