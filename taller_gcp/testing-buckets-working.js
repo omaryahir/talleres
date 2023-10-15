@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const {GoogleAuth} = require('google-auth-library');
 
 async function main() {

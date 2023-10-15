@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "google-auth": "^0.0.1",
     "google-auth-library": "^9.1.0",
     "googleapis": "^127.0.0"
   }
