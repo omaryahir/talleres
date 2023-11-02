@@ -1,4 +1,5 @@
+import SearchBar from "./components/SearchBar";
 const App = (): JSX.Element => {
-  return <div>Hello World</div>;
+  return <SearchBar />;
 }
 export default App;
