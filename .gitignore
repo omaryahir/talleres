@@ -3,3 +3,5 @@
 /taller_spring/course_netbeans/persons/nbproject/private/
 node_modules/
 *.swp
+taller_python_anaconda_jupyter/.ipynb_checkpoints/
+
