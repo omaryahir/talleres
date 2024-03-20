@@ -9,8 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <h1>Este título</h1>
-        <div style={{border: 'solid 5px red'}}>
+        <div>
         {children}
         </div>
       </body>
