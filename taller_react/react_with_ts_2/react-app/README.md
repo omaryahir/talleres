@@ -10,3 +10,5 @@ $ cd react-app
 $ npm i
 $ npm run dev 
 ```
+
+Minute: 10:10
