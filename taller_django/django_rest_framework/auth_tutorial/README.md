@@ -32,5 +32,30 @@ Navigate to the browser
 
 http://127.0.0.1:8000 
 
+Once you validated you can hit in the terminal ^C (control+C)
 
+
+### Step 5: Install django rest framework
+
+```
+$ pip install djangorestframework
+```
+
+Add in your project settings (in this case backend/settings.py) the apps:
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    ...
+    'django.contrib.staticfiles',
+
+    'rest_framework',
+    'rest_framework.authtoken'
+]
+```
+
+### Step 6: 
+
+
+### Step 7: 
 
