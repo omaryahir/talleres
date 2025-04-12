@@ -1,29 +1,36 @@
 # Tutorial Django REST Framework
 
 
-1. Create your folder for the project, in this case is called: auth_tutorial 
+### Step 1: Create your folder for the project, in this case is called: auth_tutorial 
 
-1. Create the python environment
+```
+$ mkdir auth_tutorial
+$ cd auth_tutorial
+```
 
-```$ python -m venv env```
+### Step 2: Create / Activate the python environment
 
-1. Activate the environment
+```
+$ python -m venv env
+$ source env/bin/activate
+```
 
-```$ source env/bin/activate```
+### Step 3: Install django
 
-1. Install django
+```
+$ pip install django
+```
 
-```$ pip install django```
+### Step 4: Start and test the first django project
 
-1. Start django project
+```
+$ django-admin startproject backend .
+$ python manage.py runserver
+```
 
-```$ django-admin startproject backend .```
-
-1. Test your project
-
-```$ python manage.py runserver```
-
-1. Navigate to the browser
+Navigate to the browser
 
 http://127.0.0.1:8000 
+
+
 
