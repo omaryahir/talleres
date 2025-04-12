@@ -152,3 +152,18 @@ $ curl --request POST \
 {}%
 ```
 
+
+### Step 9: Creating serializer and take advantage of the user model
+
+Create a new file named `backend/serializers.py` with this content:
+
+```python
+
+```
+
+Minute 10:55
+
+
+
+
+
