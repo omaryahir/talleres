@@ -145,3 +145,10 @@ http://127.0.0.1/register
 http://127.0.0.1/profile
 
 
+You can also run the next curl command, and you should be able to see a similar response:
+```bash
+$ curl --request POST \
+  --url http://localhost:8000/login/
+{}%
+```
+
