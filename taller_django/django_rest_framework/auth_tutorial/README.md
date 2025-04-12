@@ -132,3 +132,16 @@ Note(s):
 - The database is needed because the tokens are handled with the database
 
 
+### Step 8: Test the project
+
+Run the server 
+```
+$ python manage.py runserver 
+```
+
+Navigate to ...
+http://127.0.0.1/login
+http://127.0.0.1/register
+http://127.0.0.1/profile
+
+
