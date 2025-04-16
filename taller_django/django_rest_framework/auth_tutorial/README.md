@@ -147,8 +147,7 @@ http://127.0.0.1/profile
 
 You can also run the next curl command, and you should be able to see a similar response:
 ```bash
-$ curl --request POST \
-  --url http://localhost:8000/login/
+$ curl --request POST --url http://localhost:8000/login/
 {}%
 ```
 
@@ -158,6 +157,14 @@ $ curl --request POST \
 Create a new file named `backend/serializers.py` with this content:
 
 ```python
+from rest_framework import serializers
+from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		# fields = '__all__' or ...
+		fields = ['id', 'username', 'email', 'password']
 
 ```
 
