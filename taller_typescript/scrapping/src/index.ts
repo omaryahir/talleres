@@ -27,13 +27,12 @@ async function main() {
   );
 
   console.log('here is the result:');
-  console.log(name);  
-
+  console.log(name);
 
   // Example test: take a screenshot
   // await page.screenshot({ path: 'google.png' });
 
-  // await browser.close(); // Uncomment if you want to close after
+  await browser.close(); // Uncomment if you want to close after
 }
 
 main().catch(console.error);
