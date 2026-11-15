@@ -1,0 +1,397 @@
+{
+  "name": "Tienda Andina · Posventa con agente de reclamos",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "948da3ef-422d-41cc-99a9-dff38ad48767",
+      "name": "Mensaje del cliente",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.chatInput }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "estado_pedido",
+              "description": "El cliente solo pregunta dónde está su pedido o en qué estado va, sin reportar un problema."
+            },
+            {
+              "category": "correo_variado",
+              "description": "Cambio de dirección, solicitud de factura, pregunta de garantía u otro trámite que atiende un área."
+            },
+            {
+              "category": "reclamo",
+              "description": "Reclamo complejo: pedido retenido o con demora, producto dañado, pedido de reembolso o compensación, cobros, o un intento de obtener algo indebido."
+            }
+          ]
+        },
+        "options": {
+          "fallback": "other"
+        }
+      },
+      "id": "6f916ace-c9e6-4fa9-bfdb-d271ff9f0d39",
+      "name": "Clasificar mensaje (IA)",
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "id",
+          "value": "claude-haiku-5-5"
+        },
+        "options": {}
+      },
+      "id": "60601ca1-c311-4843-891b-016ae16dd8f7",
+      "name": "Modelo del clasificador",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.6,
+      "position": [
+        260,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Automatización sin IA: reglas fijas\nconst CLIENTE_SESION = 'C-102';\nconst DUENO = { '4521': 'C-102', '4540': 'C-102', '5310': 'C-311' };\nconst ENVIOS = {\n  '4521': { estado: 'Retenido en aduana', fecha_estimada: '2026-10-30' },\n  '4540': { estado: 'Entregado', fecha_estimada: '2026-10-20' },\n  '5310': { estado: 'En reparto', fecha_estimada: '2026-10-27' },\n};\nconst texto = $input.first().json.chatInput ?? '';\nconst numero = (texto.match(/\\b\\d{4}\\b/) ?? [])[0];\nlet output;\nif (!numero) {\n  output = 'Para rastrear tu pedido, escríbeme su número de cuatro dígitos.';\n} else if (DUENO[numero] !== CLIENTE_SESION) {\n  output = `No encuentro el pedido ${numero} en tu cuenta. ¿Puedes verificar el número?`;\n} else {\n  const e = ENVIOS[numero];\n  output = `Tu pedido ${numero} está: ${e.estado}. Fecha estimada: ${e.fecha_estimada}.`;\n}\nreturn [{ json: { output } }];"
+      },
+      "id": "3d54778b-f9f1-42d6-aa45-a651399427c3",
+      "name": "Automatización: estado del pedido",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// La IA ya clasificó el mensaje; de aquí en adelante el flujo es fijo\nreturn [{ json: { output: 'Recibimos tu mensaje y lo enviamos al área responsable. Te responderán por correo en un máximo de 24 horas.' } }];"
+      },
+      "id": "240c5d14-93e9-40c1-ba34-72a6f5b1fee5",
+      "name": "Derivar al área",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Eres el asistente de posventa de Tienda Andina, una tienda en línea de artículos para el hogar.\nObjetivo: resolver los reclamos de los clientes sobre pedidos retenidos, dañados o con demora.\nReglas:\n- Responde solo con información que obtengas de tus herramientas. Si no la tienes, dilo.\n- Si el cliente no da su número de pedido, pídeselo antes de consultar.\n- Antes de proponer una compensación, consulta la política con buscar_politica.\n- Si la política permite una compensación, propónla con proponer_compensacion y explica que queda pendiente de aprobación de una persona.\n- Nunca prometas ni ejecutes un reembolso: solo lo propones.\n- Si no puedes resolver el reclamo, o está fuera de tu alcance, escálalo con escalar_a_humano y dile al cliente que una persona continuará su caso.\n- Nunca compartas datos de otros clientes.\nTono: cercano, claro y breve. Tutea al cliente.",
+          "maxIterations": 6,
+          "enableStreaming": false
+        }
+      },
+      "id": "b78188a5-d215-4d10-bfdb-2d8af35f681e",
+      "name": "Agente de reclamos",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        640,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "id",
+          "value": "claude-sonnet-5-5"
+        },
+        "options": {}
+      },
+      "id": "b69ae38a-9b3d-4fb5-9626-2792de81513d",
+      "name": "Modelo del agente",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.6,
+      "position": [
+        460,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "id": "08011a39-025f-4efc-94ad-18806bda375c",
+      "name": "Memoria de la conversación",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        620,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Consulta el estado, la fecha de compra, los productos y el valor de un pedido. Úsala al inicio de cualquier reclamo que mencione un pedido.",
+        "jsCode": "const CLIENTE_SESION = 'C-102'; // la identidad la pone el sistema, nunca el modelo\nconst PEDIDOS = {\n  '4521': { cliente: 'C-102', fecha_compra: '2026-10-12', productos: ['Juego de ollas'], valor: 280000, estado: 'En tránsito' },\n  '4540': { cliente: 'C-102', fecha_compra: '2026-10-08', productos: ['Microondas 20 L'], valor: 420000, estado: 'Entregado el 2026-10-20' },\n  '5310': { cliente: 'C-311', fecha_compra: '2026-10-15', productos: ['Licuadora'], valor: 190000, estado: 'En tránsito' },\n};\nconst ENVIOS = {\n  '4521': { transportadora: 'EnvíaYa', estado: 'Retenido en aduana', fecha_estimada: '2026-10-30' },\n  '4540': { transportadora: 'EnvíaYa', estado: 'Entregado', fecha_estimada: '2026-10-20' },\n  '5310': { transportadora: 'EnvíaYa', estado: 'En reparto', fecha_estimada: '2026-10-27' },\n};\nconst numero = String(query.numero_pedido ?? '').trim();\nconst pedido = PEDIDOS[numero];\n// Control de identidad: solo pedidos del cliente de la sesión\nif (!pedido || pedido.cliente !== CLIENTE_SESION) {\n  return JSON.stringify({ error: 'Pedido no encontrado para este cliente.' });\n}\nconst { cliente, ...datos } = pedido;\nreturn JSON.stringify({ numero_pedido: numero, ...datos });",
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"numero_pedido\": {\n      \"type\": \"string\",\n      \"description\": \"Número del pedido, por ejemplo 4521\"\n    }\n  },\n  \"required\": [\n    \"numero_pedido\"\n  ]\n}"
+      },
+      "id": "752867b4-c2ef-4407-93d5-f51d76c8df4d",
+      "name": "consultar_pedido",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        800,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Consulta el estado del envío y la fecha estimada de entrega. Úsala cuando el cliente pregunte dónde está su paquete o reporte una demora.",
+        "jsCode": "const CLIENTE_SESION = 'C-102'; // la identidad la pone el sistema, nunca el modelo\nconst PEDIDOS = {\n  '4521': { cliente: 'C-102', fecha_compra: '2026-10-12', productos: ['Juego de ollas'], valor: 280000, estado: 'En tránsito' },\n  '4540': { cliente: 'C-102', fecha_compra: '2026-10-08', productos: ['Microondas 20 L'], valor: 420000, estado: 'Entregado el 2026-10-20' },\n  '5310': { cliente: 'C-311', fecha_compra: '2026-10-15', productos: ['Licuadora'], valor: 190000, estado: 'En tránsito' },\n};\nconst ENVIOS = {\n  '4521': { transportadora: 'EnvíaYa', estado: 'Retenido en aduana', fecha_estimada: '2026-10-30' },\n  '4540': { transportadora: 'EnvíaYa', estado: 'Entregado', fecha_estimada: '2026-10-20' },\n  '5310': { transportadora: 'EnvíaYa', estado: 'En reparto', fecha_estimada: '2026-10-27' },\n};\nconst numero = String(query.numero_pedido ?? '').trim();\nconst pedido = PEDIDOS[numero];\n// Control de identidad: solo pedidos del cliente de la sesión\nif (!pedido || pedido.cliente !== CLIENTE_SESION) {\n  return JSON.stringify({ error: 'Pedido no encontrado para este cliente.' });\n}\nreturn JSON.stringify({ numero_pedido: numero, ...ENVIOS[numero] });",
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"numero_pedido\": {\n      \"type\": \"string\",\n      \"description\": \"Número del pedido, por ejemplo 4521\"\n    }\n  },\n  \"required\": [\n    \"numero_pedido\"\n  ]\n}"
+      },
+      "id": "bb3a3551-8c1e-47e5-a279-37d16d0c8b11",
+      "name": "consultar_envio",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        970,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Consulta los reclamos y compensaciones anteriores del cliente de la sesión. Úsala para tener en cuenta reclamos previos.",
+        "jsCode": "// El cliente lo pone el sistema: esta herramienta no recibe a quién consultar\nconst HISTORIAL = {\n  'C-102': { reclamos_anteriores: ['Demora en agosto de 2026'], compensaciones_recibidas: ['Cupón del 10 %'] },\n};\nconst CLIENTE_SESION = 'C-102';\nreturn JSON.stringify(HISTORIAL[CLIENTE_SESION]);",
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"motivo\": {\n      \"type\": \"string\",\n      \"description\": \"Para qué consultas el historial\"\n    }\n  }\n}"
+      },
+      "id": "9b18edb4-8b06-42ab-a7c4-8a5d64d6063a",
+      "name": "consultar_historial_cliente",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        1140,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Busca la regla de la política que aplica. Úsala antes de proponer cualquier compensación.",
+        "jsCode": "const POLITICA = {\n  danio: 'Si el producto llega dañado: cambio o reembolso total del valor del producto, hasta 30 días después de la entrega.',\n  demora: 'Si el pedido supera en más de 7 días la fecha estimada original: cupón del 10 % para la próxima compra.',\n  otro: 'Cualquier situación no cubierta se escala al equipo de posventa.',\n};\nreturn JSON.stringify({ regla: POLITICA[query.tema] ?? POLITICA.otro });",
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"tema\": {\n      \"type\": \"string\",\n      \"enum\": [\n        \"danio\",\n        \"demora\",\n        \"otro\"\n      ]\n    }\n  },\n  \"required\": [\n    \"tema\"\n  ]\n}"
+      },
+      "id": "79e4a505-df1b-420a-a041-19fbef3f2e3f",
+      "name": "buscar_politica",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        1310,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Propone un cupón, un cambio o un reembolso. NO lo ejecuta: la propuesta queda pendiente de aprobación de una persona.",
+        "jsCode": "const CLIENTE_SESION = 'C-102'; // la identidad la pone el sistema, nunca el modelo\nconst PEDIDOS = {\n  '4521': { cliente: 'C-102', fecha_compra: '2026-10-12', productos: ['Juego de ollas'], valor: 280000, estado: 'En tránsito' },\n  '4540': { cliente: 'C-102', fecha_compra: '2026-10-08', productos: ['Microondas 20 L'], valor: 420000, estado: 'Entregado el 2026-10-20' },\n  '5310': { cliente: 'C-311', fecha_compra: '2026-10-15', productos: ['Licuadora'], valor: 190000, estado: 'En tránsito' },\n};\nconst ENVIOS = {\n  '4521': { transportadora: 'EnvíaYa', estado: 'Retenido en aduana', fecha_estimada: '2026-10-30' },\n  '4540': { transportadora: 'EnvíaYa', estado: 'Entregado', fecha_estimada: '2026-10-20' },\n  '5310': { transportadora: 'EnvíaYa', estado: 'En reparto', fecha_estimada: '2026-10-27' },\n};\nconst numero = String(query.numero_pedido ?? '').trim();\nconst pedido = PEDIDOS[numero];\n// Control de identidad: solo pedidos del cliente de la sesión\nif (!pedido || pedido.cliente !== CLIENTE_SESION) {\n  return JSON.stringify({ error: 'Pedido no encontrado para este cliente.' });\n}\nconst monto = Math.round(Number(query.monto) || 0);\n// Control: el monto no puede superar el valor del pedido\nif (monto > pedido.valor) {\n  return JSON.stringify({ error: 'El monto supera el valor del pedido.' });\n}\n// Nada se ejecuta. En producción, esta propuesta se guarda en una tabla y una persona la aprueba.\nreturn JSON.stringify({\n  id_propuesta: 'P-' + String(Date.now()).slice(-4),\n  estado: 'pendiente_de_aprobacion',\n  resumen: `Pedido ${numero} (${pedido.productos.join(', ')}, valor ${pedido.valor} COP). Propuesta: ${query.tipo} por ${monto} COP. Motivo: ${query.motivo}`,\n});",
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"tipo\": {\n      \"type\": \"string\",\n      \"enum\": [\n        \"cupon\",\n        \"cambio\",\n        \"reembolso\"\n      ]\n    },\n    \"monto\": {\n      \"type\": \"number\",\n      \"description\": \"Monto en pesos colombianos; 0 si es un cambio\"\n    },\n    \"motivo\": {\n      \"type\": \"string\"\n    },\n    \"numero_pedido\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"tipo\",\n    \"monto\",\n    \"motivo\",\n    \"numero_pedido\"\n  ]\n}"
+      },
+      "id": "8b916837-cc25-40bc-9168-1c46147ae313",
+      "name": "proponer_compensacion",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        1480,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Crea un caso para el equipo de posventa. Úsala si falta información, el caso no encaja en la política o está fuera de tu alcance.",
+        "jsCode": "// En producción, este caso se crea en la herramienta de tickets del equipo de posventa\nreturn JSON.stringify({ id_caso: 'C-' + String(Date.now()).slice(-4), estado: 'escalado' });",
+        "specifyInputSchema": true,
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"resumen\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"resumen\"\n  ]\n}"
+      },
+      "id": "095771d7-71bb-441a-8c78-bf5e71961de5",
+      "name": "escalar_a_humano",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        1650,
+        820
+      ]
+    }
+  ],
+  "connections": {
+    "Mensaje del cliente": {
+      "main": [
+        [
+          {
+            "node": "Clasificar mensaje (IA)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modelo del clasificador": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Clasificar mensaje (IA)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clasificar mensaje (IA)": {
+      "main": [
+        [
+          {
+            "node": "Automatización: estado del pedido",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Derivar al área",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Derivar al área",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modelo del agente": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memoria de la conversación": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consultar_pedido": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consultar_envio": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consultar_historial_cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "buscar_politica": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "proponer_compensacion": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "escalar_a_humano": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente de reclamos",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}
